@@ -6,6 +6,8 @@ This build (`custom.css`) leans into a nostalgic **MSN Messenger 6/7 (Windows XP
 
 ## Preview
 
+![Preview of the Beeper Y2K theme](./example.png)
+
 - Baby-blue XP-style gradients across the sidebar, header, and conversation panes
 - Glossy green "send" button and unread badges, just like the old Messenger client
 - Square, beveled avatar frames instead of circles
