@@ -31,6 +31,7 @@
   --msn-avatar-self-right: calc((var(--msn-avatar-rail-width) - 96px) / 2);
   --msn-avatar-self-bottom: 0px;
   --msn-avatar-contact-top: 58px;
+  --msn-avatar-detail-offset: 0px;
 
   --font-family: Tahoma, Verdana, "Segoe UI", sans-serif;
   --header-height: 50px;
@@ -539,11 +540,37 @@ input[type="search"]:focus,
     ) !important;
   }
 
+  /* Houd de MSN-avatarrail vóór het 300px brede user-detailpaneel. */
+  .right.right-thread:has(.thread-info),
+  .right-wrapper:has(.thread-info),
+  .bp_MainPanel:has(.thread-info) {
+    --msn-avatar-detail-offset: 300px;
+  }
+
   .right-pane-header.right-pane-header-thread,
   .mx_RoomHeader {
     position: relative !important;
     overflow: visible !important;
     z-index: 20 !important;
+    transform: none !important;
+  }
+
+  /* 4.2.1004 centreert deze wrapper met transform. Dat maakt fixed
+     descendants lokaal, waardoor de avatar midden boven het gesprek belandt. */
+  .right-pane-header .thread-header-left,
+  .mx_RoomHeader .thread-header-left {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    pointer-events: none !important;
+  }
+
+  .right-pane-header .thread-header-card,
+  .right-pane-header .thread-header-info,
+  .mx_RoomHeader .thread-header-card,
+  .mx_RoomHeader .thread-header-info {
+    pointer-events: auto !important;
   }
 
   .conversation {
@@ -568,6 +595,8 @@ input[type="search"]:focus,
 
   .thread-header .participant-imgs,
   .thread-header .GroupAvatar-module__wrapper,
+  .thread-header .thread-header-avatar,
+  .ComposeMessage-module__input > span:has(.current-user-img),
   .ComposeMessage-module__wrapper .AccountAvatar-module__container {
     box-sizing: border-box !important;
     width: 96px !important;
@@ -581,17 +610,28 @@ input[type="search"]:focus,
   }
 
   .thread-header .participant-imgs,
-  .thread-header .GroupAvatar-module__wrapper {
+  .thread-header .GroupAvatar-module__wrapper,
+  .thread-header .thread-header-avatar {
     position: fixed !important;
     z-index: 35 !important;
     top: var(--msn-avatar-contact-top) !important;
     right: var(--msn-avatar-self-right) !important;
+    right: calc(var(--msn-avatar-self-right) + var(--msn-avatar-detail-offset)) !important;
     pointer-events: none !important;
   }
 
   .thread-header .participant-imgs .participant-img,
   .thread-header .participant-imgs img,
-  .thread-header .GroupAvatar-module__wrapper img {
+  .thread-header .GroupAvatar-module__wrapper img,
+  .thread-header .thread-header-avatar :is(
+      .participant-wrapper,
+      .participant-avatar,
+      .participant-img,
+      .ThreadAvatar-module__wrapper,
+      .ThreadAvatar-module__avatar,
+      .GroupAvatar-module__wrapper,
+      img
+    ) {
     position: static !important;
     width: 82px !important;
     height: 82px !important;
@@ -601,6 +641,19 @@ input[type="search"]:focus,
     border: 1px solid #6f98bd !important;
     border-radius: 4px !important;
     box-shadow: none !important;
+  }
+
+  .thread-header .thread-header-avatar :is(
+      .participant-wrapper,
+      .participant-avatar,
+      .ThreadAvatar-module__wrapper,
+      .ThreadAvatar-module__avatar,
+      .GroupAvatar-module__wrapper
+    ) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
   }
 
   .ComposeMessage-module__wrapper {
@@ -613,10 +666,12 @@ input[type="search"]:focus,
     overflow: visible !important;
   }
 
+  .ComposeMessage-module__input > span:has(.current-user-img),
   .ComposeMessage-module__wrapper .AccountAvatar-module__container {
     position: fixed !important;
     z-index: 35 !important;
     right: var(--msn-avatar-self-right) !important;
+    right: calc(var(--msn-avatar-self-right) + var(--msn-avatar-detail-offset)) !important;
     bottom: var(--msn-avatar-self-bottom) !important;
     float: none !important;
     display: flex !important;
@@ -627,6 +682,7 @@ input[type="search"]:focus,
   }
 
   .ComposeMessage-module__wrapper .AccountAvatar-module__trigger,
+  .ComposeMessage-module__input > span:has(.current-user-img) :is(.participant-wrapper, .participant-avatar, .participant-img, .current-user-img, img),
   .ComposeMessage-module__wrapper .AccountAvatar-module__container :is(.participant-wrapper, .participant-img, .current-user-img, img) {
     position: static !important;
     display: flex !important;
