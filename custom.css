@@ -1,0 +1,770 @@
+/*
+ * MSN Messenger XP for Beeper Desktop v4
+ *
+ * Een lichte, nostalgische interpretatie van MSN Messenger 6/7.
+ * Dit theme kleurt alleen bestaande Beeper-onderdelen. Er worden geen
+ * nepknoppen, menu's, meldingen of statusbalken toegevoegd.
+ */
+
+:root {
+  color-scheme: light;
+
+  --msn-blue-900: #15428b;
+  --msn-blue-800: #1f57a6;
+  --msn-blue-700: #2f6fbe;
+  --msn-blue-600: #4a8ed7;
+  --msn-blue-400: #8fc0ec;
+  --msn-blue-300: #b9d9f3;
+  --msn-blue-200: #d8ebfa;
+  --msn-blue-100: #edf7ff;
+  --msn-green: #61a829;
+  --msn-green-dark: #3f7f16;
+  --msn-orange: #f29a2e;
+  --msn-yellow: #fff7cf;
+  --msn-ink: #17345a;
+  --msn-muted: #60758f;
+  --msn-line: #88acd1;
+  --msn-line-soft: #bed4e9;
+  --msn-white: #ffffff;
+  --msn-avatar-rail-width: 124px;
+  --msn-avatar-rail-gap: 18px;
+  --msn-avatar-self-right: calc((var(--msn-avatar-rail-width) - 96px) / 2);
+  --msn-avatar-self-bottom: 0px;
+  --msn-avatar-contact-top: 58px;
+
+  --font-family: Tahoma, Verdana, "Segoe UI", sans-serif;
+  --header-height: 50px;
+  --threads-list-item-height: 54px;
+  --inbox-avatar-size: 32px;
+  --cv-avatar-size: 34px;
+
+  --color-bg: #f4f9fd;
+  --color-bg-rgb: 244, 249, 253;
+  --color-fg: var(--msn-ink);
+  --color-fg-rgb: 23, 52, 90;
+  --color-primary: var(--msn-blue-700);
+  --color-primary-rgb: 47, 111, 190;
+  --color-gray-rgb: 96, 117, 143;
+
+  --color-base-black: #17345a;
+  --color-base-black-rgb: 23, 52, 90;
+  --color-base-white: #ffffff;
+  --color-base-white-rgb: 255, 255, 255;
+  --color-base-gray-10: #fafdff;
+  --color-base-gray-10-rgb: 250, 253, 255;
+  --color-base-gray-20: #f4f9fd;
+  --color-base-gray-20-rgb: 244, 249, 253;
+  --color-base-gray-30: #eaf4fc;
+  --color-base-gray-30-rgb: 234, 244, 252;
+  --color-base-gray-40: #dcebf7;
+  --color-base-gray-40-rgb: 220, 235, 247;
+  --color-base-gray-50: #cddfec;
+  --color-base-gray-50-rgb: 205, 223, 236;
+  --color-base-gray-60: #bed4e9;
+  --color-base-gray-60-rgb: 190, 212, 233;
+  --color-base-gray-70: #a9c3dc;
+  --color-base-gray-70-rgb: 169, 195, 220;
+  --color-base-gray-80: #88acd1;
+  --color-base-gray-80-rgb: 136, 172, 209;
+  --color-base-gray-90: #7894b0;
+  --color-base-gray-90-rgb: 120, 148, 176;
+  --color-base-gray-100: #60758f;
+  --color-base-gray-100-rgb: 96, 117, 143;
+  --color-base-gray-110: #3e5877;
+  --color-base-gray-110-rgb: 62, 88, 119;
+  --color-base-gray-120: #17345a;
+  --color-base-gray-120-rgb: 23, 52, 90;
+
+  --color-base-system-blue-80: var(--msn-blue-400);
+  --color-base-system-blue-80-rgb: 143, 192, 236;
+  --color-base-system-blue-90: var(--msn-blue-700);
+  --color-base-system-blue-90-rgb: 47, 111, 190;
+  --color-base-system-blue-100: var(--msn-blue-800);
+  --color-base-system-blue-100-rgb: 31, 87, 166;
+  --color-base-system-blue-110: var(--msn-blue-900);
+  --color-base-system-blue-110-rgb: 21, 66, 139;
+
+  --color-background-app: #f9fcff;
+  --color-background-app-weak: var(--msn-blue-100);
+  --color-background-elevated: var(--msn-white);
+  --color-background-elevated-hover: #e8f4fe;
+  --color-background-grouped: #f5faff;
+  --color-background-grouped-weak: #e3f1fc;
+  --color-background-object: #e8f3fc;
+  --color-surface: #f9fcff;
+  --color-secondary-container: #eef7fe;
+  --color-tertiary-container: #daeaf8;
+
+  --color-background-button-primary: var(--msn-blue-700);
+  --color-background-button-primary-active: var(--msn-blue-800);
+  --color-background-button-primary-disabled: #a9c3dc;
+  --color-background-button-secondary: #f7fbff;
+  --color-background-button-secondary-active: #d9ebfa;
+  --color-background-button-secondary-disabled: #edf3f8;
+  --color-background-button-translucent: rgba(47, 111, 190, 0.1);
+  --color-background-button-translucent-active: rgba(47, 111, 190, 0.18);
+  --color-background-button-translucent-disabled: rgba(96, 117, 143, 0.08);
+
+  --color-background-sidebar: rgba(221, 239, 253, 0.96);
+  --color-background-sidebar-opaque: #ddecfa;
+  --color-background-sidebar-thread-focus: rgba(255, 255, 255, 0.72);
+  --color-background-sidebar-thread-selected: var(--msn-blue-700);
+  --color-background-sidebar-thread-selected-unfocused: #b7d5ee;
+
+  --color-background-message-active: #f0f7fd;
+  --color-background-message-bubble-received: #fff9df;
+  --color-background-message-bubble-sent: #e1f1fd;
+  --color-background-message-bubble-linked: #f9fcff;
+  --color-background-selected-primary: var(--msn-blue-700);
+  --color-background-selected-secondary: rgba(47, 111, 190, 0.14);
+  --color-background-selected: var(--msn-blue-700);
+  --color-background-input: #ffffff;
+  --color-background-kbd: #e5f0f9;
+
+  --color-background-header-right: rgba(236, 247, 255, 0.98);
+  --color-background-header-right-opaque: #ecf7ff;
+  --color-background-menu: rgba(249, 252, 255, 0.98);
+  --color-background-menu-opaque: #f9fcff;
+  --color-background-menu-option-hover: var(--msn-blue-700);
+  --color-background-commandbar: rgba(249, 252, 255, 0.98);
+  --color-background-commandbar-opaque: #eef7fe;
+  --color-background-commandbar-mode: #e8f3fc;
+  --color-background-commandbar-command-highlighted: #e5f2fc;
+
+  --color-border-neutrals: var(--msn-line-soft);
+  --color-border-neutrals-strong: var(--msn-line);
+  --color-border-neutrals-weak: #d7e6f3;
+  --color-border-input: #7f9db9;
+  --color-border-input-active: var(--msn-blue-600);
+  --color-border-translucent: rgba(41, 88, 137, 0.2);
+  --color-border-translucent-strong: rgba(41, 88, 137, 0.32);
+  --color-border-translucent-strongest: rgba(21, 66, 139, 0.58);
+  --color-border-translucent-weak: rgba(41, 88, 137, 0.1);
+
+  --color-text-neutrals: var(--msn-ink);
+  --color-text-neutrals-subtle: var(--msn-muted);
+  --color-text-neutrals-weak: #3e5877;
+  --color-text-on-accent: #ffffff;
+  --color-text-on-accent-weak: rgba(255, 255, 255, 0.82);
+  --color-text-translucent: rgba(23, 52, 90, 0.94);
+  --color-text-translucent-subtle: rgba(23, 52, 90, 0.58);
+  --color-text-translucent-weak: rgba(23, 52, 90, 0.74);
+  --color-text-primary: #17345a;
+  --color-text-secondary: rgba(62, 88, 119, 0.82);
+  --color-text-tertiary: rgba(96, 117, 143, 0.68);
+
+  --color-icon-neutrals: #4d6c8c;
+  --color-icon-neutrals-strong: var(--msn-ink);
+  --color-icon-neutrals-subtle: #88a2bc;
+  --color-icon-neutrals-weak: #607f9e;
+  --color-icon-on-accent: rgba(255, 255, 255, 0.86);
+  --color-icon-on-accent-strong: #ffffff;
+  --color-icon-on-accent-weak: rgba(255, 255, 255, 0.56);
+  --color-icon-translucent: rgba(23, 52, 90, 0.64);
+  --color-icon-translucent-strong: rgba(23, 52, 90, 0.9);
+  --color-icon-translucent-subtle: rgba(23, 52, 90, 0.36);
+  --color-icon-translucent-weak: rgba(23, 52, 90, 0.48);
+
+  --color-background-scrollbar: #a5c5e2;
+  --color-background-scrollbar-hover: #78a8d4;
+  --color-background-tag: rgba(47, 111, 190, 0.12);
+  --color-overlay-modal: rgba(21, 48, 80, 0.38);
+  --color-transparent: rgba(23, 52, 90, 0);
+
+  /* Modern Beeper colour tokens. Keeping these light fixes light surfaces
+   * inheriting white text when Beeper or the operating system uses dark mode. */
+  --color-on-primary: #ffffff;
+  --color-on-primary-rgb: 255, 255, 255;
+  --color-primary-container: #ffffff;
+  --color-on-primary-container: var(--msn-blue-700);
+  --color-container-content-base-1: #60758f;
+  --color-container-inside-secondary-container: #daeaf8;
+  --color-on-secondary-container: #3e5877;
+  --color-on-tertiary-container: #3e5877;
+  --color-surface-dim: #e3f1fc;
+  --color-surface: #ffffff;
+  --color-surface-rgb: 255, 255, 255;
+  --color-surface-bright: #ffffff;
+  --color-surface-dark: #17345a;
+  --color-surface-dark-rgb: 23, 52, 90;
+  --color-on-surface: #17345a;
+  --color-on-surface-rgb: 23, 52, 90;
+  --color-on-surface-variant: #60758f;
+  --color-on-surface-variant-rgb: 96, 117, 143;
+  --color-outline: #88acd1;
+  --color-outline-variant: #b9d9f3;
+  --color-backing-shade: rgba(23, 52, 90, 0.1);
+  --color-scrim: rgba(255, 255, 255, 0.58);
+  --color-glass-surface: rgba(255, 255, 255, 0.72);
+  --color-glass-container: rgba(237, 247, 255, 0.72);
+  --color-highlight-reaction: #d8ebfa;
+
+  --left-pane-bg: linear-gradient(180deg, #f8fcff 0, #e3f3ff 22%, #d6ebfb 100%);
+  --right-pane-bg: #f9fcff;
+
+  --border-radius-25: 2px;
+  --border-radius-6: 3px;
+  --border-radius-50: 4px;
+  --border-radius-75: 5px;
+  --border-radius-100: 6px;
+  --border-radius-200: 8px;
+  --border-radius-conversation-bubble: 6px;
+
+  --mark-bg: #fff1a8;
+  --error-color: #c92b1f;
+  --warning-color: var(--msn-orange);
+  --snoozed-indicator-bg: var(--msn-orange);
+  --error-indicator-bg: var(--error-color);
+  --message-snoozed-border: var(--msn-orange);
+  --message-errored-beacon: var(--error-color);
+  --sms-sent-bg: var(--msn-green);
+  --compose-message-accent: var(--msn-blue-700);
+  --audio-bar-button: var(--msn-blue-700);
+  --audio-bar-preview-progress: var(--msn-green);
+  --audio-bar-bg: #edf7ff;
+  --audio-bar-border: var(--msn-line-soft);
+  --key-border: #8ca9c3;
+  --key-bg: linear-gradient(#ffffff, #dbeaf6);
+  --color-key-bottom-bg: #b8cee1;
+  --prefs-well: #edf7ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+    --color-bg: #f4f9fd;
+    --color-fg: #17345a;
+    --color-background-app: #f9fcff;
+    --color-background-app-weak: #edf7ff;
+    --color-background-elevated: #ffffff;
+    --color-background-sidebar: rgba(221, 239, 253, 0.96);
+    --color-background-sidebar-opaque: #ddecfa;
+    --color-background-message-bubble-received: #fff9df;
+    --color-background-message-bubble-sent: #e1f1fd;
+    --color-background-input: #ffffff;
+    --color-background-header-right: rgba(236, 247, 255, 0.98);
+    --color-background-header-right-opaque: #ecf7ff;
+    --color-background-menu: rgba(249, 252, 255, 0.98);
+    --color-background-menu-opaque: #f9fcff;
+    --color-background-commandbar: rgba(249, 252, 255, 0.98);
+    --color-background-commandbar-command-highlighted: #e5f2fc;
+    --color-text-neutrals: #17345a;
+    --color-text-neutrals-subtle: #60758f;
+    --color-text-primary: #17345a;
+    --color-text-secondary: rgba(62, 88, 119, 0.82);
+    --color-text-tertiary: rgba(96, 117, 143, 0.68);
+    --color-icon-neutrals: #4d6c8c;
+    --color-primary-container: #ffffff;
+    --color-container-content-base-1: #60758f;
+    --color-secondary-container: #eef7fe;
+    --color-container-inside-secondary-container: #daeaf8;
+    --color-on-secondary-container: #3e5877;
+    --color-tertiary-container: #daeaf8;
+    --color-on-tertiary-container: #3e5877;
+    --color-surface-dim: #e3f1fc;
+    --color-surface: #ffffff;
+    --color-surface-rgb: 255, 255, 255;
+    --color-surface-bright: #ffffff;
+    --color-surface-dark: #17345a;
+    --color-surface-dark-rgb: 23, 52, 90;
+    --color-on-surface: #17345a;
+    --color-on-surface-rgb: 23, 52, 90;
+    --color-on-surface-variant: #60758f;
+    --color-on-surface-variant-rgb: 96, 117, 143;
+    --color-outline: #88acd1;
+    --color-outline-variant: #b9d9f3;
+    --color-backing-shade: rgba(23, 52, 90, 0.1);
+    --color-highlight-reaction: #d8ebfa;
+    --left-pane-bg: linear-gradient(180deg, #f8fcff 0, #e3f3ff 22%, #d6ebfb 100%);
+    --right-pane-bg: #f9fcff;
+  }
+}
+
+html,
+body {
+  background: #d6eafb !important;
+  color: var(--msn-ink) !important;
+  font-family: var(--font-family) !important;
+  -webkit-font-smoothing: auto;
+}
+
+button,
+input,
+textarea,
+[contenteditable="true"] {
+  font-family: var(--font-family) !important;
+}
+
+.panes,
+.bp_MainPanel,
+.mx_MatrixChat,
+.mx_MatrixChat_wrapper,
+.right,
+.right-wrapper {
+  background: var(--right-pane-bg) !important;
+}
+
+/* Contactlijst: de rustige, compacte uitstraling van de eerste versie. */
+.left,
+.bp_LeftPanel,
+.account-switcher {
+  background: var(--left-pane-bg) !important;
+  border-right: 1px solid #78a4ce !important;
+  box-shadow: inset -1px 0 #ffffff, inset 0 1px rgba(255, 255, 255, 0.92);
+}
+
+.left-pane-header {
+  background:
+    radial-gradient(circle at 78% -40%, rgba(255, 255, 255, 0.9) 0 18%, transparent 44%),
+    linear-gradient(180deg, #ffffff 0%, #e7f5ff 46%, #c9e5f8 100%) !important;
+  border-bottom: 1px solid #7da8cf !important;
+  box-shadow: inset 0 -1px #eef8ff, 0 1px 2px rgba(39, 83, 128, 0.16) !important;
+}
+
+.left-pane-header [class*="displayName"],
+.left-pane-header [class*="sidebarHeader"],
+.thread-header .thread-title-top {
+  color: var(--msn-blue-900) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px #ffffff;
+}
+
+.left-pane-header [class*="filterSubtitle"] {
+  color: var(--msn-green-dark) !important;
+  font-weight: 700 !important;
+}
+
+.threads-list-container {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.44), transparent 55%) !important;
+  border-top: 1px solid #b9d5ed !important;
+}
+
+.ThreadListItem-module__wrapper,
+.sidebar-thread .thread-children {
+  border: 1px solid transparent !important;
+  border-radius: 3px !important;
+  color: var(--msn-ink) !important;
+  transition: none !important;
+}
+
+.ThreadListItem-module__wrapper:hover,
+.sidebar-thread.has-cursor .thread-children {
+  background: linear-gradient(180deg, #ffffff, #e9f5ff) !important;
+  border-color: #9fc5e6 !important;
+  box-shadow: inset 0 1px #ffffff !important;
+}
+
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected::before,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover::before,
+body:not(.window-unfocused) .sidebar-thread.selected .thread-children {
+  background: linear-gradient(180deg, #4f91db 0%, #2f70bd 52%, #22579f 100%) !important;
+  border: 1px solid #174a90 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.42), 0 1px #ffffff !important;
+}
+
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected
+  :is(.ThreadListItem-module__internal, .ThreadListItem-module__body, .ThreadListItem-module__text, .ThreadListItem-module__timestamp, .ThreadListItem-module__preview, .ThreadListItem-module__title),
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover
+  :is(.ThreadListItem-module__internal, .ThreadListItem-module__body, .ThreadListItem-module__text, .ThreadListItem-module__timestamp, .ThreadListItem-module__preview, .ThreadListItem-module__title) {
+  color: #ffffff !important;
+  text-shadow: 0 1px rgba(15, 55, 105, 0.72);
+}
+
+.ThreadListItem-module__title {
+  color: var(--msn-blue-900);
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.ThreadListItem-module__preview,
+.ThreadListItem-module__timestamp,
+.ThreadListItem-module__body {
+  color: var(--msn-muted);
+  font-size: 11px !important;
+}
+
+.ThreadListItem-module__unreadCount,
+[class*="UnreadBadge"] {
+  background: linear-gradient(#87ce49, #4f9821) !important;
+  border: 1px solid #397510 !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.52) !important;
+  color: #ffffff !important;
+  font-size: 10px !important;
+  text-shadow: 0 1px #315f13;
+}
+
+/* Vierkante MSN-schermafbeeldingen. */
+.ThreadListItem-module__wrapper img,
+.sidebar-thread .participant-img,
+.conversation .participant-img,
+.thread-header .participant-img,
+.thread-header .GroupAvatar-module__wrapper,
+[class*="Avatar-module__"] img {
+  border: 2px solid #ffffff !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 0 1px #6f98bd, 0 1px 2px rgba(25, 65, 105, 0.2) !important;
+}
+
+input[type="search"],
+[class*="Search"] input,
+.styled-inputs input,
+.styled-inputs textarea {
+  background: #ffffff !important;
+  border: 1px solid #7f9db9 !important;
+  border-radius: 2px !important;
+  box-shadow: inset 1px 1px 2px rgba(48, 82, 112, 0.15) !important;
+  color: var(--msn-ink) !important;
+}
+
+input[type="search"]:focus,
+[class*="Search"] input:focus,
+.styled-inputs input:focus,
+.styled-inputs textarea:focus {
+  border-color: var(--msn-blue-600) !important;
+  outline: 1px solid rgba(74, 142, 215, 0.22) !important;
+}
+
+/* Gesprekskop en canvas. */
+.right-pane-header.right-pane-header-thread,
+.mx_RoomHeader {
+  background:
+    radial-gradient(circle at 82% -35%, rgba(255, 255, 255, 0.95) 0 17%, transparent 45%),
+    linear-gradient(180deg, #ffffff 0%, #eaf7ff 44%, #cce7f9 100%) !important;
+  border: 0 !important;
+  border-bottom: 1px solid #7ca8d0 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 -1px #f4fbff, 0 1px 2px rgba(39, 83, 128, 0.16) !important;
+}
+
+.thread-header {
+  color: var(--msn-blue-900) !important;
+}
+
+.thread-header [class*="subtitle"],
+.thread-header [class*="Subtitle"] {
+  color: var(--msn-green-dark) !important;
+}
+
+.conversation,
+.mx_RoomView,
+.mx_RoomView_body,
+.mx_RoomView_messageListWrapper,
+.mx_AutoHideScrollbar.mx_RoomView_messagePanel,
+.messages-list-scrolling-container {
+  background:
+    radial-gradient(ellipse at 98% 0%, rgba(187, 222, 248, 0.52), transparent 36%),
+    linear-gradient(180deg, #ffffff 0%, #f8fcff 58%, #edf7ff 100%) !important;
+}
+
+.date div,
+.sticky-date-slider .date div {
+  background: linear-gradient(#ffffff, #e4f1fb) !important;
+  border: 1px solid #a9c6df !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px #ffffff !important;
+  color: var(--msn-muted) !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+}
+
+.MessageSender-module__senderName {
+  color: var(--msn-blue-800) !important;
+  font-weight: 700 !important;
+}
+
+.is-sender .MessageSender-module__senderName {
+  color: var(--msn-green-dark) !important;
+}
+
+.bubble-mode .message-contents {
+  background: linear-gradient(180deg, #fffdf2, var(--msn-yellow)) !important;
+  border: 1px solid #dccf8e !important;
+  border-radius: 5px 5px 5px 2px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.84) !important;
+  color: #273b52 !important;
+}
+
+.bubble-mode .is-sender .message-contents {
+  background: linear-gradient(180deg, #f4fbff, #dceeff) !important;
+  border-color: #9dbfdf !important;
+  border-radius: 5px 5px 2px 5px !important;
+  color: #17345a !important;
+}
+
+.bubble-mode .is-sender:not(.type-action):not(.is-deleted) .message-text-container {
+  color: #17345a !important;
+}
+
+/* Beeper laat verzonden tijdstippen anders de witte accentkleur erven. */
+.message .timestamp,
+.bubble-mode .message .timestamp,
+.bubble-mode .is-sender .message .timestamp,
+.message-contents :is(.timestamp, [class*="messageTimestamp"], [class*="MessageTimestamp"]),
+.MessageReadableMetadata-module__readableMetadata,
+.MessageReadableMetadata-module__readableMetadata.MessageReadableMetadata-module__isSender,
+.MessageReadableMetadata-module__readableMetadata.MessageReadableMetadata-module__isSender:where(:not(.MessageReadableMetadata-module__attachment)) {
+  color: var(--msn-muted) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.message-container:hover,
+.message-container.is-selected {
+  background: rgba(220, 238, 252, 0.42) !important;
+  border-left-color: var(--msn-orange) !important;
+}
+
+.message-reactions.bubble > .message-reaction-container {
+  background: linear-gradient(#ffffff, #e5f1fa) !important;
+  border: 1px solid #a9c6df !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px #ffffff !important;
+}
+
+/* Een echte MSN-zijrail: het gesprek en de composer stoppen vóór de avatars. */
+@media (min-width: 900px) {
+  .right-wrapper,
+  .bp_MainPanel {
+    position: relative !important;
+    background: linear-gradient(
+      90deg,
+      var(--right-pane-bg) 0 calc(100% - var(--msn-avatar-rail-width)),
+      #e7f3fc calc(100% - var(--msn-avatar-rail-width)) 100%
+    ) !important;
+  }
+
+  .right-pane-header.right-pane-header-thread,
+  .mx_RoomHeader {
+    position: relative !important;
+    overflow: visible !important;
+    z-index: 20 !important;
+  }
+
+  .conversation {
+    width: auto !important;
+    margin-right: var(--msn-avatar-rail-width) !important;
+    border-right: 1px solid var(--msn-line) !important;
+    box-shadow: 1px 0 #ffffff !important;
+  }
+
+  .mx_RoomView:not(:has(.conversation)) .mx_RoomView_messagePanel {
+    width: auto !important;
+    margin-right: var(--msn-avatar-rail-width) !important;
+    border-right: 1px solid var(--msn-line) !important;
+  }
+
+  .compose-message-container,
+  .mx_BasicMessageComposer:not(:has(.compose-message-container)) {
+    width: auto !important;
+    margin-right: 0 !important;
+    overflow: visible !important;
+  }
+
+  .thread-header .participant-imgs,
+  .thread-header .GroupAvatar-module__wrapper,
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container {
+    box-sizing: border-box !important;
+    width: 96px !important;
+    height: 96px !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+    background: linear-gradient(145deg, #ffffff, #e2eff8) !important;
+    border: 1px solid #7598b8 !important;
+    border-radius: 7px !important;
+    box-shadow: inset 0 0 0 2px #ffffff, 0 2px 5px rgba(38, 72, 104, 0.28) !important;
+  }
+
+  .thread-header .participant-imgs,
+  .thread-header .GroupAvatar-module__wrapper {
+    position: fixed !important;
+    z-index: 35 !important;
+    top: var(--msn-avatar-contact-top) !important;
+    right: var(--msn-avatar-self-right) !important;
+    pointer-events: none !important;
+  }
+
+  .thread-header .participant-imgs .participant-img,
+  .thread-header .participant-imgs img,
+  .thread-header .GroupAvatar-module__wrapper img {
+    position: static !important;
+    width: 82px !important;
+    height: 82px !important;
+    min-width: 82px !important;
+    min-height: 82px !important;
+    object-fit: cover !important;
+    border: 1px solid #6f98bd !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+  }
+
+  .ComposeMessage-module__wrapper {
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .ComposeMessage-module__input,
+  .ComposeMessage-module__messageInputContainer {
+    overflow: visible !important;
+  }
+
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container {
+    position: fixed !important;
+    z-index: 35 !important;
+    right: var(--msn-avatar-self-right) !important;
+    bottom: var(--msn-avatar-self-bottom) !important;
+    float: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  .ComposeMessage-module__wrapper .AccountAvatar-module__trigger,
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container :is(.participant-wrapper, .participant-img, .current-user-img, img) {
+    position: static !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 82px !important;
+    height: 82px !important;
+    min-width: 82px !important;
+    min-height: 82px !important;
+    margin: 0 !important;
+    object-fit: cover !important;
+    border: 1px solid #6f98bd !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Bestaande Beeper-composer, alleen visueel in XP-stijl. */
+.mx_BasicMessageComposer,
+.compose-message-container,
+.ComposeMessage-module__wrapper {
+  background: linear-gradient(180deg, #e8f4fd, #cfe7f8) !important;
+  border-top: 1px solid #80a9ce !important;
+  box-shadow: inset 0 1px #ffffff !important;
+}
+
+.ComposeMessage-module__input,
+.ComposeMessage-module__messageInputContainer {
+  background: #ffffff !important;
+  border: 1px solid #7f9db9 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 1px 1px 2px rgba(48, 82, 112, 0.16) !important;
+  color: var(--msn-ink) !important;
+}
+
+.ComposeMessage-module__input:has(.ProseMirror-focused),
+.ComposeMessage-module__messageInputContainer:focus-within {
+  border-color: var(--msn-blue-600) !important;
+  box-shadow: inset 1px 1px 2px rgba(48, 82, 112, 0.12), 0 0 0 1px rgba(74, 142, 215, 0.18) !important;
+}
+
+.BrandSendButton-module__container,
+button.BrandSendButton-module__container,
+.styled-inputs button.primary {
+  background: linear-gradient(180deg, #8bd351 0%, #63ae2d 48%, #488f1c 100%) !important;
+  border: 1px solid #397c14 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.55), 0 1px #ffffff !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px #315f13;
+}
+
+.BrandSendButton-module__container:not(:disabled):hover,
+button.BrandSendButton-module__container:not(:disabled):hover {
+  background: linear-gradient(180deg, #9ae05d 0%, #70ba36 48%, #4e971f 100%) !important;
+}
+
+.BrandSendButton-module__container:disabled,
+button.BrandSendButton-module__container:disabled {
+  background: linear-gradient(#e7edf2, #cbd6de) !important;
+  border-color: #9aa8b3 !important;
+  color: #7b8892 !important;
+  text-shadow: 0 1px #ffffff;
+}
+
+/* Alleen bestaande knoppen en menu's worden gestyled. */
+.styled-inputs button:not(.primary),
+.mx_AccessibleButton,
+.sidebar-button button {
+  background: linear-gradient(180deg, #ffffff 0%, #e9f2f9 54%, #cfdeea 100%);
+  border: 1px solid #829ab0;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px #ffffff;
+  color: var(--msn-ink);
+}
+
+.mx_Dialog,
+.mx_ContextualMenu,
+.mx_Menu,
+[class*="ContextMenu"],
+[class*="Popover"] {
+  background: #f9fcff !important;
+  border: 1px solid #5b7fa3 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 0 0 1px #ffffff, 3px 4px 10px rgba(26, 57, 88, 0.25) !important;
+  color: var(--msn-ink) !important;
+}
+
+.mx_Menu_item:hover,
+.mx_IconizedContextMenu_item:hover,
+[role="menuitem"]:hover {
+  background: var(--msn-blue-700) !important;
+  color: #ffffff !important;
+}
+
+kbd {
+  background: linear-gradient(#ffffff, #dbeaf6) !important;
+  border: 1px solid #8ca9c3 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 1px #a9bdd0 !important;
+  color: var(--msn-ink) !important;
+}
+
+.custom-scrollbars ::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+.custom-scrollbars ::-webkit-scrollbar-track {
+  background: #e6f0f8;
+  border-left: 1px solid #b3c9db;
+}
+
+.custom-scrollbars ::-webkit-scrollbar-thumb {
+  min-height: 28px;
+  background: linear-gradient(90deg, #c8e1f4, #88b8dd 52%, #c8e1f4) !important;
+  border: 1px solid #6795bd !important;
+  border-radius: 2px !important;
+}
+
+.custom-scrollbars ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #d5eafa, #79abd3 52%, #d5eafa) !important;
+}
+
+.ScrollToBottom-module__scrollToBottom {
+  background: linear-gradient(#ffffff, #d7e8f5) !important;
+  border: 1px solid #7198bb !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px #ffffff !important;
+  color: var(--msn-blue-900) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
