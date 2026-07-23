@@ -1,9 +1,9 @@
 /*
  * MSN Messenger XP for Beeper Desktop v4
  *
- * Een lichte, nostalgische interpretatie van MSN Messenger 6/7.
- * Dit theme kleurt alleen bestaande Beeper-onderdelen. Er worden geen
- * nepknoppen, menu's, meldingen of statusbalken toegevoegd.
+ * A light, nostalgic interpretation of MSN Messenger 6/7.
+ * This theme only recolors existing Beeper components. It does not
+ * add fake buttons, menus, notifications, or status bars.
  */
 
 :root {
@@ -305,7 +305,7 @@ textarea,
   background: var(--right-pane-bg) !important;
 }
 
-/* Contactlijst: de rustige, compacte uitstraling van de eerste versie. */
+/* Contact list: the calm, compact look of the original version. */
 .left,
 .bp_LeftPanel,
 .account-switcher {
@@ -400,7 +400,7 @@ body:not(.window-unfocused) .sidebar-thread.selected .thread-children {
   text-shadow: 0 1px #315f13;
 }
 
-/* Vierkante MSN-schermafbeeldingen. */
+/* Square MSN avatars. */
 .ThreadListItem-module__wrapper img,
 .sidebar-thread .participant-img,
 .conversation .participant-img,
@@ -431,7 +431,7 @@ input[type="search"]:focus,
   outline: 1px solid rgba(74, 142, 215, 0.22) !important;
 }
 
-/* Gesprekskop en canvas. */
+/* Conversation header and canvas. */
 .right-pane-header.right-pane-header-thread,
 .mx_RoomHeader {
   background:
@@ -502,7 +502,7 @@ input[type="search"]:focus,
   color: #17345a !important;
 }
 
-/* Beeper laat verzonden tijdstippen anders de witte accentkleur erven. */
+/* Prevent sent timestamps from inheriting the white accent color. */
 .message .timestamp,
 .bubble-mode .message .timestamp,
 .bubble-mode .is-sender .message .timestamp,
@@ -528,7 +528,7 @@ input[type="search"]:focus,
   box-shadow: inset 0 1px #ffffff !important;
 }
 
-/* Een echte MSN-zijrail: het gesprek en de composer stoppen vóór de avatars. */
+/* A true MSN side rail: the conversation and composer stop before the avatars. */
 @media (min-width: 900px) {
   .right-wrapper,
   .bp_MainPanel {
@@ -540,7 +540,7 @@ input[type="search"]:focus,
     ) !important;
   }
 
-  /* Houd de MSN-avatarrail vóór het 300px brede user-detailpaneel. */
+  /* Keep the MSN avatar rail in front of the 300px-wide user detail panel. */
   .right.right-thread:has(.thread-info),
   .right-wrapper:has(.thread-info),
   .bp_MainPanel:has(.thread-info) {
@@ -555,8 +555,8 @@ input[type="search"]:focus,
     transform: none !important;
   }
 
-  /* 4.2.1004 centreert deze wrapper met transform. Dat maakt fixed
-     descendants lokaal, waardoor de avatar midden boven het gesprek belandt. */
+    /* Version 4.2.1004 centers this wrapper with transform. That makes fixed
+      descendants local, causing the avatar to end up centered above the conversation. */
   .right-pane-header .thread-header-left,
   .mx_RoomHeader .thread-header-left {
     left: 0 !important;
@@ -700,7 +700,7 @@ input[type="search"]:focus,
   }
 }
 
-/* Bestaande Beeper-composer, alleen visueel in XP-stijl. */
+/* Existing Beeper composer, visually styled in XP theme only. */
 .mx_BasicMessageComposer,
 .compose-message-container,
 .ComposeMessage-module__wrapper {
@@ -748,7 +748,7 @@ button.BrandSendButton-module__container:disabled {
   text-shadow: 0 1px #ffffff;
 }
 
-/* Alleen bestaande knoppen en menu's worden gestyled. */
+/* Only existing buttons and menus are styled. */
 .styled-inputs button:not(.primary),
 .mx_AccessibleButton,
 .sidebar-button button {
