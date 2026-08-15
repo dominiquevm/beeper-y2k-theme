@@ -8,6 +8,8 @@ It only restyles Beeper’s existing interface—no fake buttons, menus, or noti
 
 ## Preview
 
+### Original light theme
+
 ![Preview of the Beeper Y2K theme](./example.png)
 
 - Baby-blue XP-style gradients across the sidebar, header, and conversation panes
@@ -15,6 +17,10 @@ It only restyles Beeper’s existing interface—no fake buttons, menus, or noti
 - Square, bevelled avatar frames instead of circles
 - A dedicated avatar rail on the right side of conversations on wider screens
 - Classic Tahoma and Verdana system fonts
+
+### Dark theme
+
+![Preview of the Beeepr Y2K dark theme](./example_dark.png)
 
 ## Requirements
 
@@ -34,6 +40,12 @@ The theme targets the CSS class names used in Beeper Desktop v4 and will not dis
 
 ```css
 @import url("https://cdn.jsdelivr.net/gh/dominiquevm/beeper-y2k-theme@latest/custom.css");
+```
+
+Or for the dark theme,
+
+```css
+@import url("https://cdn.jsdelivr.net/gh/dominiquevm/beeper-y2k-theme@latest/custom_dark.css");
 ```
 
 5. Save or apply your changes.
