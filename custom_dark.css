@@ -716,6 +716,12 @@ input[type="search"]:focus,
   color: var(--msn-ink) !important;
 }
 
+.ComposeMessage-module__input :is([contenteditable="true"], textarea, input),
+.ComposeMessage-module__messageInputContainer :is([contenteditable="true"], textarea, input),
+.ProseMirror {
+  caret-color: #ffffff !important;
+}
+
 .ComposeMessage-module__input:has(.ProseMirror-focused),
 .ComposeMessage-module__messageInputContainer:focus-within {
   border-color: var(--msn-blue-300) !important;
