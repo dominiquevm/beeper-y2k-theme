@@ -1,26 +1,27 @@
-# Release v0.2.0
+# Release v0.2.1
 
 Summary
-- Restore compatibility with Beeper Desktop v4.3.34.
-- Place the merged-contact chat switcher on the contact's avatar instead of the self-portrait slot.
-- Stop the thread list hover frame from running underneath Beeper's row divider.
-- Give pinned chats the same MSN selection treatment, including a white title.
-- Keep mentions readable inside the pale MSN message bubbles.
-- Pin the text caret colour so it stays visible (reported invisible on Windows).
-- Re-pin the surface tokens that Beeper's "Rich" and "Monochrome" base themes override on `<body>`, without touching your accent colour.
+- Stop media results from ballooning and overflowing the search palette.
+- Make search thumbnails fill their square instead of letterboxing inside it.
 
 Changelog
-- fix(compat): support Beeper v4.3.34 UI changes
-- docs: note v4.3.34 compatibility and base-theme independence
+- fix(search): stop media results from blowing up the search palette (b5a8083)
 
 Notes
-Beeper 4.3 renders the merged-chat switcher through the same `AccountAvatar-module__container`
-class as your own avatar, which is why the theme used to blow it up into the self-portrait slot.
-All selectors added in this release are additive, so the theme keeps working on the v4.2 class
-names as well.
+Beeper sizes the media grid in the search palette with `repeat(5, minmax(auto, 1fr))`.
+The `auto` minimum means a single result whose title is a long unbreakable URL grows every
+column to that min-content width. Combined with `aspect-ratio: 1/1` and no overflow clamp on
+the tile, the thumbnails balloon and paint over the rest of the popup. Measured against
+Beeper's own stylesheet, one such result took the grid from 5x186px to 5x369px with 899px of
+horizontal overflow.
 
-Beeper's own "Rich" and "Monochrome" base themes redefine core tokens on `<body>`, which outranks
-`:root`. That made the theme look different depending on which base theme an install happened to
-use — most visibly the left pane background and the message surfaces. Those tokens are now re-pinned.
-The accent tokens are deliberately left alone, so the green accent colour recommended in the README
-keeps working.
+The tracks now get a fixed minimum through `auto-fill`, so no single result can resize the
+others, and the tile itself is clamped. Thumbnail size is controlled by the
+`--msn-search-media-size` variable at the top of the file; raise it for bigger tiles.
+
+Beeper also stretches `.enhanced-img` to the tile but not the wrapper inside it, so images
+letterboxed within the square rather than filling it. That wrapper is now stretched too, which
+lets `object-fit: cover` do its job.
+
+Upgrading from v0.2.0 requires no action for `@import` installs; copy `custom.css` again for
+manual installs.
