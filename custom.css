@@ -32,6 +32,10 @@
   --msn-avatar-self-bottom: 0px;
   --msn-avatar-contact-top: 58px;
   --msn-avatar-detail-offset: 0px;
+  --msn-avatar-frame-size: 96px;
+  --msn-avatar-inner-size: 82px;
+  --msn-switcher-size: 30px;
+  --caret-color: var(--msn-blue-800);
 
   --font-family: Tahoma, Verdana, "Segoe UI", sans-serif;
   --header-height: 50px;
@@ -281,6 +285,42 @@
   }
 }
 
+/* Beeper's own "Rich" and "Monochrome" base themes redefine core tokens on
+ * <body>, which outranks the :root block above. Re-pin the surface tokens this
+ * theme depends on so the MSN look survives whichever base theme is selected —
+ * a common reason for the theme looking right on one machine and wrong on
+ * another. The accent tokens (--color-primary, --color-brand, --color-from and
+ * --color-to) are deliberately left alone so the accent colour picked in
+ * Settings > Appearance keeps working. */
+body.theme-rich,
+body.theme-monochrome,
+body.theme-rich[data-theme-color] {
+  background: #d6eafb !important;
+
+  --color-fg: var(--msn-ink);
+  --color-on-surface: var(--msn-ink);
+  --color-on-surface-rgb: 23, 52, 90;
+  --color-on-surface-variant: var(--msn-muted);
+  --color-surface-dark: var(--msn-ink);
+  --color-secondary-container: #eef7fe;
+  --color-background-message-bubble-received: #fff9df;
+  --color-highlight-reaction: #d8ebfa;
+  --color-base-gray-20: #f4f9fd;
+  --color-base-gray-30: #eaf4fc;
+  --color-base-gray-40: #dcebf7;
+  --color-base-gray-50: #cddfec;
+  --color-base-gray-60: #bed4e9;
+  --color-base-gray-70: #a9c3dc;
+  --color-base-gray-80: #88acd1;
+  --color-base-gray-100: #60758f;
+  --color-base-gray-110: #3e5877;
+  --color-base-gray-120: #17345a;
+  --left-pane-bg: linear-gradient(180deg, #f8fcff 0, #e3f3ff 22%, #d6ebfb 100%);
+  --right-pane-bg: #f9fcff;
+  --theme-bg: #d6eafb;
+  --theme-background-gradient: #d6eafb;
+}
+
 html,
 body {
   background: #d6eafb !important;
@@ -355,6 +395,24 @@ textarea,
   box-shadow: inset 0 1px #ffffff !important;
 }
 
+/* Beeper draws a hairline divider as a pseudo element at the bottom of every
+ * row, painted on top of the row itself. That line cut straight through the
+ * raised MSN hover frame, so lift the hovered row and drop the dividers that
+ * touch it. */
+.ThreadListItem-module__wrapper:hover,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.ThreadListItem-module__wrapper:hover::after,
+.sidebar-thread:hover section::after,
+.sidebar-thread:has(+ .sidebar-thread:hover) section::after,
+.sidebar-thread.isSelected section::after,
+.sidebar-thread.isNextSelected section::after {
+  display: none !important;
+}
+
 .ThreadListItem-module__wrapper.ThreadListItem-module__isSelected,
 .ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover,
 .ThreadListItem-module__wrapper.ThreadListItem-module__isSelected::before,
@@ -387,6 +445,53 @@ body:not(.window-unfocused) .sidebar-thread.selected .thread-children {
 .ThreadListItem-module__body {
   color: var(--msn-muted);
   font-size: 11px !important;
+}
+
+/* Pinned chats are rendered by a separate component, so they need the same
+ * selection treatment or the name stays dark blue on the blue highlight. */
+.PinnedThreadListItem-module__wrapper {
+  border: 1px solid transparent !important;
+  border-radius: 3px !important;
+  color: var(--msn-ink) !important;
+  transition: none !important;
+}
+
+.PinnedThreadListItem-module__title {
+  color: var(--msn-blue-900) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+.PinnedThreadListItem-module__wrapper:hover {
+  background: linear-gradient(180deg, #ffffff, #e9f5ff) !important;
+  border-color: #9fc5e6 !important;
+  box-shadow: inset 0 1px #ffffff !important;
+}
+
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected,
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected:hover,
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected::before,
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected:hover::before,
+body:not(.window-unfocused) .sidebar-thread.isPinned.selected .thread-children {
+  background: linear-gradient(180deg, #4f91db 0%, #2f70bd 52%, #22579f 100%) !important;
+  border: 1px solid #174a90 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.42), 0 1px #ffffff !important;
+
+  /* Unread bubble and dot flip to white so they stay visible on the blue. */
+  --bubble-bg-color: #ffffff;
+  --bubble-fg-color: var(--msn-blue-800);
+}
+
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected,
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected:hover,
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected
+  :is(.PinnedThreadListItem-module__heading, .PinnedThreadListItem-module__title),
+.PinnedThreadListItem-module__wrapper.PinnedThreadListItem-module__isSelected:hover
+  :is(.PinnedThreadListItem-module__heading, .PinnedThreadListItem-module__title),
+body:not(.window-unfocused) .sidebar-thread.isPinned.selected .thread-children .title {
+  color: #ffffff !important;
+  text-shadow: 0 1px rgba(15, 55, 105, 0.72);
 }
 
 .ThreadListItem-module__unreadCount,
@@ -502,6 +607,32 @@ input[type="search"]:focus,
   color: #17345a !important;
 }
 
+/* Mentions inherit Beeper's on-accent colour, which is white. That is fine on
+ * Beeper's saturated bubbles but unreadable on the pale MSN ones, so pin the
+ * mention colours to the theme's blues and give a highlighted mention of you a
+ * proper yellow marker. */
+.mention,
+.user-mention,
+.mention-hover-card-trigger {
+  color: var(--msn-blue-800) !important;
+  font-weight: 700 !important;
+}
+
+.is-sender .mention,
+.is-sender .user-mention,
+.is-sender .mention-hover-card-trigger {
+  color: var(--msn-blue-900) !important;
+}
+
+.highlighted-mention,
+.is-sender .highlighted-mention {
+  padding: 0 3px !important;
+  background-color: #ffe27a !important;
+  border-radius: 3px !important;
+  color: #4a3708 !important;
+  text-shadow: none !important;
+}
+
 /* Prevent sent timestamps from inheriting the white accent color. */
 .message .timestamp,
 .bubble-mode .message .timestamp,
@@ -597,7 +728,7 @@ input[type="search"]:focus,
   .thread-header .GroupAvatar-module__wrapper,
   .thread-header .thread-header-avatar,
   .ComposeMessage-module__input > span:has(.current-user-img),
-  .ComposeMessage-module__wrapper .AccountAvatar-module__container {
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container:not(.AccountAvatar-module__merged) {
     box-sizing: border-box !important;
     width: 96px !important;
     height: 96px !important;
@@ -667,7 +798,7 @@ input[type="search"]:focus,
   }
 
   .ComposeMessage-module__input > span:has(.current-user-img),
-  .ComposeMessage-module__wrapper .AccountAvatar-module__container {
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container:not(.AccountAvatar-module__merged) {
     position: fixed !important;
     z-index: 35 !important;
     right: var(--msn-avatar-self-right) !important;
@@ -681,9 +812,9 @@ input[type="search"]:focus,
     pointer-events: auto !important;
   }
 
-  .ComposeMessage-module__wrapper .AccountAvatar-module__trigger,
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container:not(.AccountAvatar-module__merged) .AccountAvatar-module__trigger,
   .ComposeMessage-module__input > span:has(.current-user-img) :is(.participant-wrapper, .participant-avatar, .participant-img, .current-user-img, img),
-  .ComposeMessage-module__wrapper .AccountAvatar-module__container :is(.participant-wrapper, .participant-img, .current-user-img, img) {
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container:not(.AccountAvatar-module__merged) :is(.participant-wrapper, .participant-img, .current-user-img, img) {
     position: static !important;
     display: flex !important;
     align-items: center !important;
@@ -697,6 +828,70 @@ input[type="search"]:focus,
     border: 1px solid #6f98bd !important;
     border-radius: 4px !important;
     box-shadow: none !important;
+  }
+
+  /* Merged contacts (one person on several networks) render the chat switcher
+   * in the composer instead of your own picture. Beeper 4.3 gives it the same
+   * AccountAvatar container class, so the theme used to blow it up into the
+   * self-portrait slot. Park it as a small chip on the contact's avatar, which
+   * is where the network you are talking on belongs. */
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container.AccountAvatar-module__merged {
+    position: fixed !important;
+    z-index: 36 !important;
+    top: calc(
+      var(--msn-avatar-contact-top) + var(--msn-avatar-frame-size) - var(--msn-switcher-size) + 4px
+    ) !important;
+    right: calc(var(--msn-avatar-self-right) + var(--msn-avatar-detail-offset) - 4px) !important;
+    bottom: auto !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: var(--msn-switcher-size) !important;
+    height: var(--msn-switcher-size) !important;
+    margin: 0 !important;
+    padding: 2px !important;
+    float: none !important;
+    overflow: visible !important;
+    background: linear-gradient(145deg, #ffffff, #e2eff8) !important;
+    border: 1px solid #7598b8 !important;
+    border-radius: 4px !important;
+    box-shadow: inset 0 0 0 1px #ffffff, 0 1px 3px rgba(38, 72, 104, 0.34) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  .ComposeMessage-module__wrapper .AccountAvatar-module__merged .SwitchChatHoverCard-module__trigger,
+  .ComposeMessage-module__wrapper .AccountAvatar-module__merged .chatSwitcher-module__chatAvatar {
+    width: calc(var(--msn-switcher-size) - 8px) !important;
+    height: calc(var(--msn-switcher-size) - 8px) !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+
+  .ComposeMessage-module__wrapper .AccountAvatar-module__merged :is(
+      .participant-wrapper,
+      .participant-avatar,
+      .participant-img,
+      .ThreadAvatar-module__wrapper,
+      .GroupAvatar-module__wrapper,
+      img
+    ) {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+    border: 0 !important;
+    border-radius: 2px !important;
+    box-shadow: none !important;
+  }
+
+  .ComposeMessage-module__wrapper .AccountAvatar-module__merged .chatSwitcher-module__badge {
+    width: 12px !important;
+    height: 12px !important;
+    right: -5px !important;
+    bottom: -5px !important;
   }
 }
 
@@ -716,6 +911,31 @@ input[type="search"]:focus,
   border-radius: 3px !important;
   box-shadow: inset 1px 1px 2px rgba(48, 82, 112, 0.16) !important;
   color: var(--msn-ink) !important;
+}
+
+/* The text caret takes Beeper's accent colour through an inline style, which
+ * on Windows can land on a colour that disappears against the white MSN input.
+ * Pin it to an MSN blue, and colour the scripted fallback caret to match. */
+.ProseMirror,
+.ComposeMessage-module__input,
+.ComposeMessage-module__messageInputContainer,
+.ComposeMessage-module__textArea,
+input,
+textarea,
+[contenteditable="true"] {
+  caret-color: var(--msn-blue-800) !important;
+}
+
+/* Keep the places where Beeper deliberately hides the caret. */
+.ProseMirror.no-cursor,
+.ProseMirror-hideselection * {
+  caret-color: transparent !important;
+}
+
+.fake-cursor,
+.ProseMirror:focus .fake-cursor,
+.ProseMirror-gapcursor::after {
+  border-color: var(--msn-blue-800) !important;
 }
 
 .ComposeMessage-module__input:has(.ProseMirror-focused),

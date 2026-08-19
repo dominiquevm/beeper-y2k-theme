@@ -21,7 +21,9 @@ It only restyles Beeper’s existing interface—no fake buttons, menus, or noti
 - **Beeper Desktop v4**, the Matrix-based rewrite
 - **Light mode** is recommended
 
-The theme targets the CSS class names used in Beeper Desktop v4 and will not display correctly on older Beeper versions.
+The theme targets the CSS class names used in Beeper Desktop v4 and will not display correctly on older Beeper versions. It is verified against **v4.3.34** and remains compatible with the earlier v4.2 class names.
+
+Any of Beeper's base themes will work. The theme re-pins the surface tokens that the Rich and Monochrome themes redefine on `<body>`, while leaving your accent colour untouched.
 
 ## Installation
 
