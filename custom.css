@@ -35,6 +35,7 @@
   --msn-avatar-frame-size: 96px;
   --msn-avatar-inner-size: 82px;
   --msn-switcher-size: 30px;
+  --msn-search-media-size: 96px;
   --caret-color: var(--msn-blue-800);
 
   --font-family: Tahoma, Verdana, "Segoe UI", sans-serif;
@@ -1004,6 +1005,30 @@ kbd {
   border-radius: 2px !important;
   box-shadow: 0 1px #a9bdd0 !important;
   color: var(--msn-ink) !important;
+}
+
+/* Media results in the search palette. Beeper sizes that grid with
+ * repeat(5, minmax(auto, 1fr)); the auto minimum means a single result whose
+ * title is a long unbreakable URL blows every column up to its min-content
+ * width, so the thumbnails balloon and spill out of the popup. Give the tracks
+ * a fixed minimum instead, which both fixes the overflow and keeps the
+ * thumbnails at a sane MSN-sized square. Raise --msn-search-media-size for
+ * bigger tiles. */
+.GeneralSearchResults-module__mediaResultsContainer {
+  grid-template-columns: repeat(auto-fill, minmax(var(--msn-search-media-size), 1fr)) !important;
+}
+
+.SelectMediaCommand-module__selectMediaCommand {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Beeper stretches .enhanced-img to fill the tile but not the wrapper inside
+ * it, so images letterbox instead of filling the square. */
+.SelectMediaCommand-module__attachmentContainer .enhanced-img > div {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .custom-scrollbars ::-webkit-scrollbar {
