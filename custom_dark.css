@@ -1,0 +1,831 @@
+/*
+ * MSN Messenger XP for Beeper Desktop v4 (Dark)
+ *
+ * A dark, nostalgic interpretation of MSN Messenger 6/7.
+ * This theme only recolors existing Beeper components. It does not
+ * add fake buttons, menus, notifications, or status bars.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --msn-blue-hs: 210 60%;
+  --msn-blue-900: hsl(var(--msn-blue-hs) 69%);
+  --msn-blue-800: hsl(var(--msn-blue-hs) 61%);
+  --msn-blue-700: hsl(var(--msn-blue-hs) 54%);
+  --msn-blue-600: hsl(var(--msn-blue-hs) 61%);
+  --msn-blue-500: hsl(var(--msn-blue-hs) 74%);
+  --msn-blue-400: hsl(var(--msn-blue-hs) 45%);
+  --msn-blue-300: hsl(var(--msn-blue-hs) 30%);
+  --msn-blue-200: hsl(var(--msn-blue-hs) 10%);
+  --msn-blue-100: hsl(var(--msn-blue-hs) 4%);
+  --msn-green: #61a829;
+  --msn-green-dark: #7fd158;
+  --msn-orange: #02ab7a;
+  --msn-othermsg-hs: 210 65%;
+  --msn-othermsg-grad1: hsl(var(--msn-othermsg-hs), 30%);
+  --msn-othermsg-grad2: hsl(var(--msn-othermsg-hs), 15%);
+  --msn-othermsg-border: hsl(var(--msn-othermsg-hs), 5%);
+  --msn-ink: #dbe8f5;
+  --msn-muted: var(--msn-ink);
+  --msn-line: #255280;
+  --msn-line-soft: #142c43;
+  --msn-white: #16293e;
+  --msn-avatar-rail-width: 124px;
+  --msn-avatar-rail-gap: 18px;
+  --msn-avatar-self-right: calc((var(--msn-avatar-rail-width) - 96px) / 2);
+  --msn-avatar-self-bottom: 0px;
+  --msn-avatar-contact-top: 58px;
+  --msn-avatar-detail-offset: 0px;
+
+  --font-family: Tahoma, Verdana, "Segoe UI", sans-serif;
+  --header-height: 50px;
+  --threads-list-item-height: 54px;
+  --inbox-avatar-size: 32px;
+  --cv-avatar-size: 34px;
+
+  --color-bg: #0a1420;
+  --color-bg-rgb: 10, 20, 32;
+  --color-fg: var(--msn-ink);
+  --color-fg-rgb: 219, 232, 245;
+  --color-primary: var(--msn-blue-700);
+  --color-primary-rgb: 71, 130, 202;
+  --color-gray-rgb: 147, 168, 194;
+
+  --color-base-black: #dbe8f5;
+  --color-base-black-rgb: 219, 232, 245;
+  --color-base-white: #0a1420;
+  --color-base-white-rgb: 10, 20, 32;
+  --color-base-gray-10: #050b10;
+  --color-base-gray-10-rgb: 5, 11, 16;
+  --color-base-gray-20: #0a1420;
+  --color-base-gray-20-rgb: 10, 20, 32;
+  --color-base-gray-30: #0d1a29;
+  --color-base-gray-30-rgb: 13, 26, 41;
+  --color-base-gray-40: #0f2032;
+  --color-base-gray-40-rgb: 15, 32, 50;
+  --color-base-gray-50: #14293f;
+  --color-base-gray-50-rgb: 20, 41, 63;
+  --color-base-gray-60: #1a3350;
+  --color-base-gray-60-rgb: 26, 51, 80;
+  --color-base-gray-70: #23405f;
+  --color-base-gray-70-rgb: 35, 64, 95;
+  --color-base-gray-80: #2f5074;
+  --color-base-gray-80-rgb: 47, 80, 116;
+  --color-base-gray-90: #43648a;
+  --color-base-gray-90-rgb: 67, 100, 138;
+  --color-base-gray-100: #5c7ba0;
+  --color-base-gray-100-rgb: 92, 123, 160;
+  --color-base-gray-110: #93a8c2;
+  --color-base-gray-110-rgb: 147, 168, 194;
+  --color-base-gray-120: #dbe8f5;
+  --color-base-gray-120-rgb: 219, 232, 245;
+
+  --color-base-system-blue-80: var(--msn-blue-400);
+  --color-base-system-blue-80-rgb: 143, 192, 236;
+  --color-base-system-blue-90: var(--msn-blue-700);
+  --color-base-system-blue-90-rgb: 71, 130, 202;
+  --color-base-system-blue-100: var(--msn-blue-800);
+  --color-base-system-blue-100-rgb: 102, 147, 211;
+  --color-base-system-blue-110: var(--msn-blue-900);
+  --color-base-system-blue-110-rgb: 131, 165, 219;
+
+  --color-background-app: #0b1826;
+  --color-background-app-weak: var(--msn-blue-100);
+  --color-background-elevated: var(--msn-white);
+  --color-background-elevated-hover: #1b3149;
+  --color-background-grouped: #0d1c2c;
+  --color-background-grouped-weak: #101f30;
+  --color-background-object: #112234;
+  --color-surface: #0b1826;
+  --color-secondary-container: #142639;
+  --color-tertiary-container: #1c3450;
+
+  --color-background-button-primary: var(--msn-blue-700);
+  --color-background-button-primary-active: var(--msn-blue-800);
+  --color-background-button-primary-disabled: #23405f;
+  --color-background-button-secondary: #16283f;
+  --color-background-button-secondary-active: #1c3450;
+  --color-background-button-secondary-disabled: #131f2c;
+  --color-background-button-translucent: rgba(71, 130, 202, 0.14);
+  --color-background-button-translucent-active: rgba(71, 130, 202, 0.24);
+  --color-background-button-translucent-disabled: rgba(147, 168, 194, 0.08);
+
+  --color-background-sidebar: rgba(11, 22, 34, 0.96);
+  --color-background-sidebar-opaque: #0d1e2f;
+  --color-background-sidebar-thread-focus: rgba(255, 255, 255, 0.06);
+  --color-background-sidebar-thread-selected: var(--msn-blue-700);
+  --color-background-sidebar-thread-selected-unfocused: #2a3f57;
+
+  --color-background-message-active: #112234;
+  --color-background-message-bubble-received: #2a2110;
+  --color-background-message-bubble-sent: #16283f;
+  --color-background-message-bubble-linked: #0b1826;
+  --color-background-selected-primary: var(--msn-blue-700);
+  --color-background-selected-secondary: rgba(71, 130, 202, 0.2);
+  --color-background-selected: var(--msn-blue-700);
+  --color-background-input: #142639;
+  --color-background-kbd: #16293e;
+
+  --color-background-header-right: rgba(15, 27, 41, 0.98);
+  --color-background-header-right-opaque: #0f1b29;
+  --color-background-menu: rgba(16, 29, 44, 0.98);
+  --color-background-menu-opaque: #101d2c;
+  --color-background-menu-option-hover: var(--msn-blue-700);
+  --color-background-commandbar: rgba(16, 29, 44, 0.98);
+  --color-background-commandbar-opaque: #142639;
+  --color-background-commandbar-mode: #112234;
+  --color-background-commandbar-command-highlighted: #16293e;
+
+  --color-border-neutrals: var(--msn-line-soft);
+  --color-border-neutrals-strong: var(--msn-line);
+  --color-border-neutrals-weak: #1c2f42;
+  --color-border-input: #3e6488;
+  --color-border-input-active: var(--msn-blue-600);
+  --color-border-translucent: rgba(122, 168, 217, 0.2);
+  --color-border-translucent-strong: rgba(122, 168, 217, 0.32);
+  --color-border-translucent-strongest: rgba(131, 165, 219, 0.58);
+  --color-border-translucent-weak: rgba(122, 168, 217, 0.1);
+
+  --color-text-neutrals: var(--msn-ink);
+  --color-text-neutrals-subtle: var(--msn-muted);
+  --color-text-neutrals-weak: #80a1c9;
+  --color-text-on-accent: #ffffff;
+  --color-text-on-accent-weak: rgba(255, 255, 255, 0.82);
+  --color-text-translucent: rgba(219, 232, 245, 0.94);
+  --color-text-translucent-subtle: rgba(219, 232, 245, 0.58);
+  --color-text-translucent-weak: rgba(219, 232, 245, 0.74);
+  --color-text-primary: #dbe8f5;
+  --color-text-secondary: rgba(160, 182, 207, 0.82);
+  --color-text-tertiary: rgba(147, 168, 194, 0.68);
+
+  --color-icon-neutrals: #6a92bb;
+  --color-icon-neutrals-strong: var(--msn-ink);
+  --color-icon-neutrals-subtle: #4c6884;
+  --color-icon-neutrals-weak: #5780a9;
+  --color-icon-on-accent: rgba(255, 255, 255, 0.86);
+  --color-icon-on-accent-strong: #ffffff;
+  --color-icon-on-accent-weak: rgba(255, 255, 255, 0.56);
+  --color-icon-translucent: rgba(219, 232, 245, 0.64);
+  --color-icon-translucent-strong: rgba(219, 232, 245, 0.9);
+  --color-icon-translucent-subtle: rgba(219, 232, 245, 0.36);
+  --color-icon-translucent-weak: rgba(219, 232, 245, 0.48);
+
+  --color-background-scrollbar: #3a5c82;
+  --color-background-scrollbar-hover: #4a749f;
+  --color-background-tag: rgba(71, 130, 202, 0.18);
+  --color-overlay-modal: rgba(2, 6, 12, 0.55);
+  --color-transparent: rgba(10, 20, 32, 0);
+
+  /* Modern Beeper colour tokens. Keeping these light fixes light surfaces
+   * inheriting white text when Beeper or the operating system uses dark mode. */
+  --color-on-primary: #ffffff;
+  --color-on-primary-rgb: 255, 255, 255;
+  --color-primary-container: #16293e;
+  --color-on-primary-container: var(--msn-blue-700);
+  --color-container-content-base-1: #93a8c2;
+  --color-container-inside-secondary-container: #1c3450;
+  --color-on-secondary-container: #a7bcd4;
+  --color-on-tertiary-container: #a7bcd4;
+  --color-surface-dim: #0d1e2f;
+  --color-surface: #0b1826;
+  --color-surface-rgb: 11, 24, 38;
+  --color-surface-bright: #16293e;
+  --color-surface-dark: #dbe8f5;
+  --color-surface-dark-rgb: 219, 232, 245;
+  --color-on-surface: #dbe8f5;
+  --color-on-surface-rgb: 219, 232, 245;
+  --color-on-surface-variant: #93a8c2;
+  --color-on-surface-variant-rgb: 147, 168, 194;
+  --color-outline: #255280;
+  --color-outline-variant: #122b40;
+  --color-backing-shade: rgba(255, 255, 255, 0.06);
+  --color-scrim: rgba(2, 6, 12, 0.6);
+  --color-glass-surface: rgba(10, 20, 32, 0.72);
+  --color-glass-container: rgba(14, 26, 40, 0.72);
+  --color-highlight-reaction: #1c3450;
+
+  --left-pane-bg: linear-gradient(180deg, #16283f 0, #101f33 22%, #0b1a29 100%);
+  --right-pane-bg: #0d1c2c;
+
+  --border-radius-25: 2px;
+  --border-radius-6: 3px;
+  --border-radius-50: 4px;
+  --border-radius-75: 5px;
+  --border-radius-100: 6px;
+  --border-radius-200: 8px;
+  --border-radius-conversation-bubble: 6px;
+
+  --mark-bg: #4a3c12;
+  --error-color: #ef5b4e;
+  --warning-color: var(--msn-orange);
+  --snoozed-indicator-bg: var(--msn-orange);
+  --error-indicator-bg: var(--error-color);
+  --message-snoozed-border: var(--msn-orange);
+  --message-errored-beacon: var(--error-color);
+  --sms-sent-bg: var(--msn-green);
+  --compose-message-accent: var(--msn-blue-700);
+  --audio-bar-button: var(--msn-blue-700);
+  --audio-bar-preview-progress: var(--msn-green);
+  --audio-bar-bg: #16293e;
+  --audio-bar-border: var(--msn-line-soft);
+  --key-border: #3d5a78;
+  --key-bg: linear-gradient(#223c54, #16293e);
+  --color-key-bottom-bg: #112234;
+  --prefs-well: #16293e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-bg: #0a1420;
+    --color-fg: #dbe8f5;
+    --color-background-app: #0b1826;
+    --color-background-app-weak: #050b10;
+    --color-background-elevated: #16293e;
+    --color-background-sidebar: rgba(11, 22, 34, 0.96);
+    --color-background-sidebar-opaque: #0d1e2f;
+    --color-background-message-bubble-received: #2a2110;
+    --color-background-message-bubble-sent: #16283f;
+    --color-background-input: #142639;
+    --color-background-header-right: rgba(15, 27, 41, 0.98);
+    --color-background-header-right-opaque: #0f1b29;
+    --color-background-menu: rgba(16, 29, 44, 0.98);
+    --color-background-menu-opaque: #101d2c;
+    --color-background-commandbar: rgba(16, 29, 44, 0.98);
+    --color-background-commandbar-command-highlighted: #16293e;
+    --color-text-neutrals: #dbe8f5;
+    --color-text-neutrals-subtle: #93a8c2;
+    --color-text-primary: #dbe8f5;
+    --color-text-secondary: rgba(160, 182, 207, 0.82);
+    --color-text-tertiary: rgba(147, 168, 194, 0.68);
+    --color-icon-neutrals: #6a92bb;
+    --color-primary-container: #16293e;
+    --color-container-content-base-1: #93a8c2;
+    --color-secondary-container: #142639;
+    --color-container-inside-secondary-container: #1c3450;
+    --color-on-secondary-container: #a7bcd4;
+    --color-tertiary-container: #1c3450;
+    --color-on-tertiary-container: #a7bcd4;
+    --color-surface-dim: #0d1e2f;
+    --color-surface: #0b1826;
+    --color-surface-rgb: 11, 24, 38;
+    --color-surface-bright: #16293e;
+    --color-surface-dark: #dbe8f5;
+    --color-surface-dark-rgb: 219, 232, 245;
+    --color-on-surface: #dbe8f5;
+    --color-on-surface-rgb: 219, 232, 245;
+    --color-on-surface-variant: #93a8c2;
+    --color-on-surface-variant-rgb: 147, 168, 194;
+    --color-outline: #255280;
+    --color-outline-variant: #122b40;
+    --color-backing-shade: rgba(255, 255, 255, 0.06);
+    --color-highlight-reaction: #1c3450;
+    --left-pane-bg: linear-gradient(180deg, #16283f 0, #101f33 22%, #0b1a29 100%);
+    --right-pane-bg: #0d1c2c;
+  }
+}
+
+html,
+body {
+  background: #0a1420 !important;
+  color: var(--msn-ink) !important;
+  font-family: var(--font-family) !important;
+  -webkit-font-smoothing: auto;
+}
+
+button,
+input,
+textarea,
+[contenteditable="true"] {
+  font-family: var(--font-family) !important;
+}
+
+.panes,
+.bp_MainPanel,
+.mx_MatrixChat,
+.mx_MatrixChat_wrapper,
+.right,
+.right-wrapper {
+  background: var(--right-pane-bg) !important;
+}
+
+/* Contact list: the calm, compact look of the original version. */
+.left,
+.bp_LeftPanel,
+.account-switcher {
+  background: var(--left-pane-bg) !important;
+  border-right: 1px solid #295d8f !important;
+  box-shadow: inset -1px 0 rgba(255, 255, 255, 0.06), inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.left-pane-header {
+  background:
+    radial-gradient(circle at 78% -40%, rgba(255, 255, 255, 0.08) 0 18%, transparent 44%),
+    linear-gradient(180deg, #1c3249 0%, #17293c 46%, #112234 100%) !important;
+  border-bottom: 1px solid #2c4a68 !important;
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.left-pane-header [class*="displayName"],
+.left-pane-header [class*="sidebarHeader"],
+.thread-header .thread-title-top {
+  color: var(--msn-blue-900) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.left-pane-header [class*="filterSubtitle"] {
+  color: var(--msn-green-dark) !important;
+  font-weight: 700 !important;
+}
+
+.threads-list-container {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent 55%) !important;
+  border-top: 1px solid #142e44 !important;
+}
+
+.ThreadListItem-module__wrapper,
+.sidebar-thread .thread-children {
+  border: 1px solid transparent !important;
+  border-radius: 3px !important;
+  color: var(--msn-ink) !important;
+  transition: none !important;
+}
+
+.ThreadListItem-module__wrapper:hover,
+.sidebar-thread.has-cursor .thread-children {
+  background: linear-gradient(180deg, #223c56, #1b3049) !important;
+  border-color: #1b3f5e !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected::before,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover::before,
+body:not(.window-unfocused) .sidebar-thread.selected .thread-children {
+  background: linear-gradient(180deg, hsl(213, 60%, 40%) 0%, hsl(214, 49%, 30%) 52%, hsl(215, 53%, 20%) 100%) !important;
+  border: 1px solid #1f3f66 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover,
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:is(.ThreadListItem-module__internal, .ThreadListItem-module__body, .ThreadListItem-module__text, .ThreadListItem-module__timestamp, .ThreadListItem-module__preview, .ThreadListItem-module__title),
+.ThreadListItem-module__wrapper.ThreadListItem-module__isSelected:hover:is(.ThreadListItem-module__internal, .ThreadListItem-module__body, .ThreadListItem-module__text, .ThreadListItem-module__timestamp, .ThreadListItem-module__preview, .ThreadListItem-module__title) {
+  color: #ffffff !important;
+  text-shadow: 0 1px rgba(15, 55, 105, 0.72);
+}
+
+.ThreadListItem-module__title {
+  color: var(--msn-blue-900);
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.ThreadListItem-module__preview,
+.ThreadListItem-module__timestamp,
+.ThreadListItem-module__body {
+  color: var(--msn-muted);
+  font-size: 11px !important;
+}
+
+.ThreadListItem-module__unreadCount,
+[class*="UnreadBadge"] {
+  background: linear-gradient(#87ce49, #4f9821) !important;
+  border: 1px solid #397510 !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.52) !important;
+  color: #ffffff !important;
+  font-size: 10px !important;
+  text-shadow: 0 1px #315f13;
+}
+
+/* Square MSN avatars. */
+.ThreadListItem-module__wrapper img,
+.sidebar-thread .participant-img,
+.conversation .participant-img,
+.thread-header .participant-img,
+.thread-header .GroupAvatar-module__wrapper,
+[class*="Avatar-module__"] img {
+  border: 2px solid var(--msn-blue-300) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 0 1px var(--msn-blue-300), 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+input[type="search"],
+[class*="Search"] input,
+.styled-inputs input,
+.styled-inputs textarea {
+  background: #142639 !important;
+  border: 1px solid #3d5a78 !important;
+  border-radius: 2px !important;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+  color: var(--msn-ink) !important;
+}
+
+input[type="search"]:focus,
+[class*="Search"] input:focus,
+.styled-inputs input:focus,
+.styled-inputs textarea:focus {
+  border-color: var(--msn-blue-600) !important;
+  outline: 1px solid rgba(90, 150, 220, 0.35) !important;
+}
+
+/* Conversation header and canvas. */
+.right-pane-header.right-pane-header-thread,
+.mx_RoomHeader {
+  background:
+    radial-gradient(circle at 82% -35%, rgba(255, 255, 255, 0.08) 0 17%, transparent 45%),
+    linear-gradient(180deg, #1c3249 0%, #17293c 44%, #112234 100%) !important;
+  border: 0 !important;
+  border-bottom: 1px solid #2c4a68 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.thread-header {
+  color: var(--msn-blue-900) !important;
+}
+
+.thread-header [class*="subtitle"],
+.thread-header [class*="Subtitle"] {
+  color: var(--msn-green-dark) !important;
+}
+
+.conversation,
+.mx_RoomView,
+.mx_RoomView_body,
+.mx_RoomView_messageListWrapper,
+.mx_AutoHideScrollbar.mx_RoomView_messagePanel,
+.messages-list-scrolling-container {
+  background:
+    radial-gradient(ellipse at 98% 0%, rgba(60, 110, 165, 0.14), transparent 36%),
+    linear-gradient(180deg, #142639 0%, #112234 58%, #0e1d2d 100%) !important;
+}
+
+.date div,
+.sticky-date-slider .date div {
+  background: linear-gradient(#223c54, #16293e) !important;
+  border: 1px solid #395875 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06) !important;
+  color: var(--msn-muted) !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+}
+
+.MessageSender-module__senderName {
+  color: var(--msn-blue-400) !important;
+  font-weight: 700 !important;
+}
+
+.is-sender .MessageSender-module__senderName {
+  color: var(--msn-green-dark) !important;
+}
+
+.bubble-mode .message-contents {
+  background: linear-gradient(180deg, var(--msn-othermsg-grad1), var(--msn-othermsg-grad2)) !important;
+  border: 1px solid var(--msn-othermsg-border) !important;
+  border-radius: 5px 5px 5px 2px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08) !important;
+  color: var(--msn-ink) !important;
+}
+
+.bubble-mode .is-sender .message-contents {
+  background: linear-gradient(180deg, #16283f, #112234) !important;
+  border-color: var(--msn-blue-200) !important;
+  border-radius: 5px 5px 2px 5px !important;
+  color: #dbe8f5 !important;
+}
+
+.bubble-mode .is-sender:not(.type-action):not(.is-deleted) .message-text-container {
+  color: #dbe8f5 !important;
+}
+
+/* Prevent sent timestamps from inheriting the white accent color. */
+.message .timestamp,
+.bubble-mode .message .timestamp,
+.bubble-mode .is-sender .message .timestamp,
+.message-contents :is(.timestamp, [class*="messageTimestamp"], [class*="MessageTimestamp"]),
+.MessageReadableMetadata-module__readableMetadata,
+.MessageReadableMetadata-module__readableMetadata.MessageReadableMetadata-module__isSender,
+.MessageReadableMetadata-module__readableMetadata.MessageReadableMetadata-module__isSender:where(:not(.MessageReadableMetadata-module__attachment)) {
+  color: var(--msn-muted) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.message-container:hover,
+.message-container.is-selected {
+  background: rgba(40, 70, 105, 0.4) !important;
+  border-left-color: var(--msn-orange) !important;
+}
+
+.message-reactions.bubble>.message-reaction-container {
+  background: linear-gradient(#223c54, #16293e) !important;
+  border: 1px solid #395875 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+/* A true MSN side rail: the conversation and composer stop before the avatars. */
+@media (min-width: 900px) {
+
+  .right-wrapper,
+  .bp_MainPanel {
+    position: relative !important;
+    background: linear-gradient(90deg,
+        var(--right-pane-bg) 0 calc(100% - var(--msn-avatar-rail-width)),
+        #16293e calc(100% - var(--msn-avatar-rail-width)) 100%) !important;
+  }
+
+  /* Keep the MSN avatar rail in front of the 300px-wide user detail panel. */
+  .right.right-thread:has(.thread-info),
+  .right-wrapper:has(.thread-info),
+  .bp_MainPanel:has(.thread-info) {
+    --msn-avatar-detail-offset: 300px;
+  }
+
+  .right-pane-header.right-pane-header-thread,
+  .mx_RoomHeader {
+    position: relative !important;
+    overflow: visible !important;
+    z-index: 20 !important;
+    transform: none !important;
+  }
+
+  /* Version 4.2.1004 centers this wrapper with transform. That makes fixed
+   *     descendants local, causing the avatar to end up centered above the conversation. */
+  .right-pane-header .thread-header-left,
+  .mx_RoomHeader .thread-header-left {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    pointer-events: none !important;
+  }
+
+  .right-pane-header .thread-header-card,
+  .right-pane-header .thread-header-info,
+  .mx_RoomHeader .thread-header-card,
+  .mx_RoomHeader .thread-header-info {
+    pointer-events: auto !important;
+  }
+
+  .conversation {
+    width: auto !important;
+    margin-right: var(--msn-avatar-rail-width) !important;
+    border-right: 1px solid var(--msn-line) !important;
+    box-shadow: 1px 0 rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .mx_RoomView:not(:has(.conversation)) .mx_RoomView_messagePanel {
+    width: auto !important;
+    margin-right: var(--msn-avatar-rail-width) !important;
+    border-right: 1px solid var(--msn-line) !important;
+  }
+
+  .compose-message-container,
+  .mx_BasicMessageComposer:not(:has(.compose-message-container)) {
+    width: auto !important;
+    margin-right: 0 !important;
+    overflow: visible !important;
+  }
+
+  .thread-header .participant-imgs,
+  .thread-header .GroupAvatar-module__wrapper,
+  .thread-header .thread-header-avatar,
+  .ComposeMessage-module__input>span:has(.current-user-img),
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container {
+    box-sizing: border-box !important;
+    width: 96px !important;
+    height: 96px !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+    background: linear-gradient(145deg, #223c54, #17293c) !important;
+    border: 1px solid var(--msn-blue-200) !important;
+    border-radius: 7px !important;
+    box-shadow: inset 0 0 0 2px var(--msn-blue-300), 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .thread-header .participant-imgs,
+  .thread-header .GroupAvatar-module__wrapper,
+  .thread-header .thread-header-avatar {
+    position: fixed !important;
+    z-index: 35 !important;
+    top: var(--msn-avatar-contact-top) !important;
+    right: var(--msn-avatar-self-right) !important;
+    right: calc(var(--msn-avatar-self-right) + var(--msn-avatar-detail-offset)) !important;
+    pointer-events: none !important;
+  }
+
+  .thread-header .participant-imgs .participant-img,
+  .thread-header .participant-imgs img,
+  .thread-header .GroupAvatar-module__wrapper img,
+  .thread-header .thread-header-avatar :is(.participant-wrapper,
+    .participant-avatar,
+    .participant-img,
+    .ThreadAvatar-module__wrapper,
+    .ThreadAvatar-module__avatar,
+    .GroupAvatar-module__wrapper,
+    img) {
+    position: static !important;
+    width: 82px !important;
+    height: 82px !important;
+    min-width: 82px !important;
+    min-height: 82px !important;
+    object-fit: cover !important;
+    border: 1px solid #4a749f !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+  }
+
+  .thread-header .thread-header-avatar :is(.participant-wrapper,
+    .participant-avatar,
+    .ThreadAvatar-module__wrapper,
+    .ThreadAvatar-module__avatar,
+    .GroupAvatar-module__wrapper) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .ComposeMessage-module__wrapper {
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .ComposeMessage-module__input,
+  .ComposeMessage-module__messageInputContainer {
+    overflow: visible !important;
+  }
+
+  .ComposeMessage-module__input>span:has(.current-user-img),
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container {
+    position: fixed !important;
+    z-index: 35 !important;
+    right: var(--msn-avatar-self-right) !important;
+    right: calc(var(--msn-avatar-self-right) + var(--msn-avatar-detail-offset)) !important;
+    bottom: var(--msn-avatar-self-bottom) !important;
+    float: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  .ComposeMessage-module__wrapper .AccountAvatar-module__trigger,
+  .ComposeMessage-module__input>span:has(.current-user-img) :is(.participant-wrapper, .participant-avatar, .participant-img, .current-user-img, img),
+  .ComposeMessage-module__wrapper .AccountAvatar-module__container :is(.participant-wrapper, .participant-img, .current-user-img, img) {
+    position: static !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 82px !important;
+    height: 82px !important;
+    min-width: 82px !important;
+    min-height: 82px !important;
+    margin: 0 !important;
+    object-fit: cover !important;
+    border: 1px solid #4a749f !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Existing Beeper composer, visually styled in XP theme only. */
+.mx_BasicMessageComposer,
+.compose-message-container,
+.ComposeMessage-module__wrapper {
+  background: linear-gradient(180deg, #16283f, #112234) !important;
+  border-top: 1px solid #285a88 !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+.ComposeMessage-module__input,
+.ComposeMessage-module__messageInputContainer {
+  background: #142639 !important;
+  border: 1px solid #3d5a78 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+  color: var(--msn-ink) !important;
+}
+
+.ComposeMessage-module__input :is([contenteditable="true"], textarea, input),
+.ComposeMessage-module__messageInputContainer :is([contenteditable="true"], textarea, input),
+.ProseMirror {
+  caret-color: #ffffff !important;
+}
+
+.ComposeMessage-module__input:has(.ProseMirror-focused),
+.ComposeMessage-module__messageInputContainer:focus-within {
+  border-color: var(--msn-blue-300) !important;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(90, 150, 220, 0.3) !important;
+}
+
+.BrandSendButton-module__container,
+button.BrandSendButton-module__container,
+.styled-inputs button.primary {
+  background: linear-gradient(180deg, #8bd351 0%, #63ae2d 48%, #488f1c 100%) !important;
+  border: 1px solid #397c14 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.45), 0 1px rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px #315f13;
+}
+
+.BrandSendButton-module__container:not(:disabled):hover,
+button.BrandSendButton-module__container:not(:disabled):hover {
+  background: linear-gradient(180deg, #9ae05d 0%, #70ba36 48%, #4e971f 100%) !important;
+}
+
+.BrandSendButton-module__container:disabled,
+button.BrandSendButton-module__container:disabled {
+  background: linear-gradient(#232f3b, #1a232c) !important;
+  border-color: #3a4550 !important;
+  color: #7a8590 !important;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Only existing buttons and menus are styled. */
+.styled-inputs button:not(.primary),
+.mx_AccessibleButton,
+.sidebar-button button {
+  background: linear-gradient(180deg, #1c3249 0%, #182b3e 54%, #112234 100%);
+  border: 1px solid #3d5265;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07);
+  color: var(--msn-ink);
+}
+
+.mx_Dialog,
+.mx_ContextualMenu,
+.mx_Menu,
+[class*="ContextMenu"],
+[class*="Popover"] {
+  background: #16293e !important;
+  border: 1px solid #3d5a78 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07), 3px 4px 14px rgba(0, 0, 0, 0.55) !important;
+  color: var(--msn-ink) !important;
+}
+
+.mx_Menu_item:hover,
+.mx_IconizedContextMenu_item:hover,
+[role="menuitem"]:hover {
+  background: var(--msn-blue-700) !important;
+  color: #ffffff !important;
+}
+
+kbd {
+  background: linear-gradient(#223c54, #16293e) !important;
+  border: 1px solid #3d5a78 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 1px #0a1622 !important;
+  color: var(--msn-ink) !important;
+}
+
+.custom-scrollbars ::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+.custom-scrollbars ::-webkit-scrollbar-track {
+  background: #0f1f30;
+  border-left: 1px solid #24405c;
+}
+
+.custom-scrollbars ::-webkit-scrollbar-thumb {
+  min-height: 28px;
+  background: linear-gradient(90deg, #3a5c82, #274768 52%, #3a5c82) !important;
+  border: 1px solid #446e93 !important;
+  border-radius: 2px !important;
+}
+
+.custom-scrollbars ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #4a749f, #33587e 52%, #4a749f) !important;
+}
+
+.ScrollToBottom-module__scrollToBottom {
+  background: linear-gradient(#223c54, #16293e) !important;
+  border: 1px solid #3d5a78 !important;
+  border-radius: 3px !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07) !important;
+  color: var(--msn-blue-900) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
