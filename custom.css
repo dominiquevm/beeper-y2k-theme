@@ -660,6 +660,23 @@ input[type="search"]:focus,
   box-shadow: inset 0 1px #ffffff !important;
 }
 
+/* Below the side-rail breakpoint Beeper keeps its default stacked avatar + name card.
+   The MSN header is an opaque 50px bar, so the stack overflows it and the name pill
+   lands on top of the messages. Lay the card out in a row so it fits inside the bar. */
+@media (max-width: 899px) {
+  .thread-header-left .thread-header-card {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-top: 0 !important;
+    height: var(--header-height);
+  }
+
+  .thread-header-left .thread-header-avatar {
+    margin-bottom: 0 !important;
+  }
+}
+
 /* A true MSN side rail: the conversation and composer stop before the avatars. */
 @media (min-width: 900px) {
   .right-wrapper,
