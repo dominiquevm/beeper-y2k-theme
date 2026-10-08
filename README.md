@@ -19,9 +19,9 @@ It only restyles Beeper’s existing interface—no fake buttons, menus, or noti
 ## Requirements
 
 - **Beeper Desktop v4**, the Matrix-based rewrite
-- **Light mode** is recommended
+- Works the same whether macOS, Windows, or Beeper is set to light or dark mode
 
-The theme targets the CSS class names used in Beeper Desktop v4 and will not display correctly on older Beeper versions. It is verified against **v4.3.34** and remains compatible with the earlier v4.2 class names.
+The theme targets the CSS class names used in Beeper Desktop v4 and will not display correctly on older Beeper versions. It is verified against **v4.3.34**, its dark mode handling is checked against the **v4.3.176** stylesheet, and it remains compatible with the earlier v4.2 class names.
 
 Any of Beeper's base themes will work. The theme re-pins the surface tokens that the Rich and Monochrome themes redefine on `<body>`, while leaving your accent colour untouched.
 
@@ -81,7 +81,7 @@ If you have added personal CSS underneath the import, remove only the following 
 
 ## Notes
 
-- The theme is designed for **light mode**. Its `color-scheme` is pinned to `light` so it remains consistent even when your operating system uses dark mode.
+- MSN Messenger never had a dark mode, so neither does this theme. Its `color-scheme` is pinned to `light` and every colour token Beeper changes in dark mode is pinned back to its light value, so the theme looks the same when your operating system switches to dark mode.
 - It uses `!important` where necessary to override Beeper’s default styling.
 - Beeper updates may change internal CSS class names and temporarily break parts of the theme.
 - If something looks broken after a Beeper update, please [open an issue](https://github.com/dominiquevm/beeper-y2k-theme/issues) and include a screenshot.

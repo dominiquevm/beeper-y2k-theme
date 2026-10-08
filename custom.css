@@ -235,55 +235,158 @@
   --prefs-well: #edf7ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: light;
-    --color-bg: #f4f9fd;
-    --color-fg: #17345a;
-    --color-background-app: #f9fcff;
-    --color-background-app-weak: #edf7ff;
-    --color-background-elevated: #ffffff;
-    --color-background-sidebar: rgba(221, 239, 253, 0.96);
-    --color-background-sidebar-opaque: #ddecfa;
-    --color-background-message-bubble-received: #fff9df;
-    --color-background-message-bubble-sent: #e1f1fd;
-    --color-background-input: #ffffff;
-    --color-background-header-right: rgba(236, 247, 255, 0.98);
-    --color-background-header-right-opaque: #ecf7ff;
-    --color-background-menu: rgba(249, 252, 255, 0.98);
-    --color-background-menu-opaque: #f9fcff;
-    --color-background-commandbar: rgba(249, 252, 255, 0.98);
-    --color-background-commandbar-command-highlighted: #e5f2fc;
-    --color-text-neutrals: #17345a;
-    --color-text-neutrals-subtle: #60758f;
-    --color-text-primary: #17345a;
-    --color-text-secondary: rgba(62, 88, 119, 0.82);
-    --color-text-tertiary: rgba(96, 117, 143, 0.68);
-    --color-icon-neutrals: #4d6c8c;
-    --color-primary-container: #ffffff;
-    --color-container-content-base-1: #60758f;
-    --color-secondary-container: #eef7fe;
-    --color-container-inside-secondary-container: #daeaf8;
-    --color-on-secondary-container: #3e5877;
-    --color-tertiary-container: #daeaf8;
-    --color-on-tertiary-container: #3e5877;
-    --color-surface-dim: #e3f1fc;
-    --color-surface: #ffffff;
-    --color-surface-rgb: 255, 255, 255;
-    --color-surface-bright: #ffffff;
-    --color-surface-dark: #17345a;
-    --color-surface-dark-rgb: 23, 52, 90;
-    --color-on-surface: #17345a;
-    --color-on-surface-rgb: 23, 52, 90;
-    --color-on-surface-variant: #60758f;
-    --color-on-surface-variant-rgb: 96, 117, 143;
-    --color-outline: #88acd1;
-    --color-outline-variant: #b9d9f3;
-    --color-backing-shade: rgba(23, 52, 90, 0.1);
-    --color-highlight-reaction: #d8ebfa;
-    --left-pane-bg: linear-gradient(180deg, #f8fcff 0, #e3f3ff 22%, #d6ebfb 100%);
-    --right-pane-bg: #f9fcff;
-  }
+/* Dark mode. MSN Messenger never had one, so the theme looks identical
+ * whether the operating system (or Beeper) is set to light or dark.
+ *
+ * Beeper's newer design tokens (--appearance-*) switch to their dark values
+ * through :root:not([data-theme=light]) inside a prefers-color-scheme: dark
+ * query. That selector outranks a plain :root, so those tokens used to slip
+ * past the block above and turned the chat info panel, dialogs and settings
+ * black. Re-pin every token that differs in dark mode to Beeper's own light
+ * value, on selectors that match its specificity. */
+:root,
+:root:not([data-theme="light"]),
+:root[data-theme="dark"] {
+  color-scheme: light;
+
+  --appearance-alpha-inverse-0: var(--palette-base-alpha-white-0);
+  --appearance-alpha-inverse-1: var(--palette-base-alpha-white-1);
+  --appearance-alpha-inverse-2: var(--palette-base-alpha-white-2);
+  --appearance-alpha-inverse-3: var(--palette-base-alpha-white-3);
+  --appearance-alpha-inverse-5: var(--palette-base-alpha-white-5);
+  --appearance-alpha-inverse-6: var(--palette-base-alpha-white-6);
+  --appearance-alpha-inverse-8: var(--palette-base-alpha-white-8);
+  --appearance-alpha-inverse-10: var(--palette-base-alpha-white-10);
+  --appearance-alpha-inverse-15: var(--palette-base-alpha-white-15);
+  --appearance-alpha-inverse-20: var(--palette-base-alpha-white-20);
+  --appearance-alpha-inverse-30: var(--palette-base-alpha-white-30);
+  --appearance-alpha-inverse-40: var(--palette-base-alpha-white-40);
+  --appearance-alpha-inverse-50: var(--palette-base-alpha-white-50);
+  --appearance-alpha-inverse-60: var(--palette-base-alpha-white-60);
+  --appearance-alpha-inverse-70: var(--palette-base-alpha-white-70);
+  --appearance-alpha-inverse-80: var(--palette-base-alpha-white-80);
+  --appearance-alpha-inverse-90: var(--palette-base-alpha-white-90);
+  --appearance-alpha-inverse-95: var(--palette-base-alpha-white-95);
+  --appearance-alpha-0: var(--palette-base-alpha-black-0);
+  --appearance-alpha-1: var(--palette-base-alpha-black-1);
+  --appearance-alpha-2: var(--palette-base-alpha-black-2);
+  --appearance-alpha-3: var(--palette-base-alpha-black-3);
+  --appearance-alpha-5: var(--palette-base-alpha-black-5);
+  --appearance-alpha-6: var(--palette-base-alpha-black-6);
+  --appearance-alpha-8: var(--palette-base-alpha-black-8);
+  --appearance-alpha-10: var(--palette-base-alpha-black-10);
+  --appearance-alpha-15: var(--palette-base-alpha-black-15);
+  --appearance-alpha-20: var(--palette-base-alpha-black-20);
+  --appearance-alpha-30: var(--palette-base-alpha-black-30);
+  --appearance-alpha-40: var(--palette-base-alpha-black-40);
+  --appearance-alpha-50: var(--palette-base-alpha-black-50);
+  --appearance-alpha-60: var(--palette-base-alpha-black-60);
+  --appearance-alpha-70: var(--palette-base-alpha-black-70);
+  --appearance-alpha-80: var(--palette-base-alpha-black-80);
+  --appearance-alpha-90: var(--palette-base-alpha-black-90);
+  --appearance-alpha-95: var(--palette-base-alpha-black-95);
+  --appearance: light;
+  --appearance-color: light;
+  --appearance-color-bg-fill-disabled: var(--appearance-alpha-3);
+  --appearance-color-bg-fill-main: var(--main-light-bg-fill-main);
+  --appearance-color-bg-fill-main-disabled: var(--main-light-bg-fill-main-disabled);
+  --appearance-color-bg-fill-main-muted: var(--main-light-bg-fill-main-muted);
+  --appearance-color-bg-fill-main-muted-pressed: var(--main-light-bg-fill-main-muted-pressed);
+  --appearance-color-bg-fill-main-pressed: var(--main-light-bg-fill-main-pressed);
+  --appearance-color-bg-fill-on-secondary: var(--appearance-color-bg-fill-white);
+  --appearance-color-bg-fill-pressed: var(--appearance-alpha-8);
+  --appearance-color-bg-fill-primary: var(--appearance-alpha-6);
+  --appearance-color-bg-fill-primary-inverse: var(--appearance-alpha-inverse-10);
+  --appearance-color-bg-fill-secondary: var(--appearance-alpha-10);
+  --appearance-color-bg-fill-secondary-inverse: var(--appearance-alpha-inverse-15);
+  --appearance-color-bg-fill-tertiary: var(--appearance-alpha-15);
+  --appearance-color-bg-inverse: var(--palette-base-black);
+  --appearance-color-bg-primary: var(--palette-base-white);
+  --appearance-color-bg-primary-elevated: var(--palette-base-white);
+  --appearance-color-bg-secondary: var(--theme-neutral-50);
+  --appearance-color-bg-secondary-elevated: var(--palette-base-white);
+  --appearance-color-border-danger: var(--theme-danger-alpha-200);
+  --appearance-color-border-danger-emphasis: var(--theme-danger-alpha-600);
+  --appearance-color-border-emphasis: var(--theme-neutral-900);
+  --appearance-color-border-main: var(--main-light-border);
+  --appearance-color-border-main-emphasis: var(--main-light-border-emphasis);
+  --appearance-color-border-secondary: var(--theme-neutral-100);
+  --appearance-color-border-tertiary: var(--theme-dark-neutral-alpha-25);
+  --appearance-color-border-warning: var(--theme-warning-alpha-200);
+  --appearance-color-border-warning-emphasis: var(--theme-warning-alpha-600);
+  --appearance-color-text-inverse: var(--palette-base-white);
+  --appearance-color-text-inverse-secondary: var(--theme-light-neutral-alpha-500);
+  --appearance-color-text-inverse-tertiary: var(--theme-light-neutral-alpha-100);
+  --appearance-color-text-main: var(--main-light-text);
+  --appearance-color-text-main-disabled: var(--main-light-text-disabled);
+  --appearance-color-text-on-main: var(--main-light-text-on-main);
+  --appearance-color-text-primary: var(--palette-base-black);
+  --appearance-color-text-quaternary: var(--theme-dark-neutral-alpha-25);
+  --appearance-color-text-secondary: var(--theme-dark-neutral-alpha-500);
+  --appearance-color-text-tertiary: var(--theme-dark-neutral-alpha-100);
+  --appearance-color-transparent: var(--palette-base-alpha-white-0);
+  --appearance-glass: light;
+  --appearance-glass-main-fill-muted: var(--theme-main-alpha-light-50);
+  --appearance-glass-neutral-fill: #ffffff80;
+  --appearance-glass-lg-neutral-effect-depth: var(--semantic-glass-light-lg-depth);
+  --appearance-glass-lg-neutral-effect-frost: var(--semantic-glass-light-lg-frost);
+  --appearance-glass-lg-neutral-effect-intensity: var(--semantic-glass-light-lg-intensity);
+  --appearance-glass-lg-neutral-effect-refraction: var(--semantic-glass-light-lg-refraction);
+  --appearance-glass-md-neutral-effect-depth: var(--semantic-glass-light-md-depth);
+  --appearance-glass-md-neutral-effect-frost: var(--semantic-glass-light-md-frost);
+  --appearance-glass-md-neutral-effect-intensity: var(--semantic-glass-light-md-intensity);
+  --appearance-glass-md-neutral-effect-refraction: var(--semantic-glass-light-md-refraction);
+  --appearance-glass-sm-neutral-effect-depth: var(--semantic-glass-light-sm-depth);
+  --appearance-glass-sm-neutral-effect-frost: var(--semantic-glass-light-sm-frost);
+  --appearance-glass-sm-neutral-effect-intensity: var(--semantic-glass-light-sm-intensity);
+  --appearance-glass-sm-neutral-effect-refraction: var(--semantic-glass-light-sm-refraction);
+  --appearance-glass-sm-shadow: var(--semantic-glass-light-sm-shadow);
+  --appearance-glass-sm-shadow-blur: var(--semantic-glass-light-sm-shadow-blur);
+  --appearance-glass-sm-shadow-blur-elevated: var(--semantic-glass-light-sm-shadow-blur-elevated);
+  --appearance-glass-sm-shadow-offset-y: var(--semantic-glass-light-sm-shadow-offset-y);
+  --appearance-glass-sm-shadow-offset-y-elevated: var(--semantic-glass-light-sm-shadow-offset-y-elevated);
+  --appearance-glass-sm-shadow-spread: var(--semantic-glass-light-sm-shadow-spread);
+  --appearance-glass-sm-shadow-spread-elevated: var(--semantic-glass-light-sm-shadow-spread-elevated);
+  --appearance-translucent-neutral-fill-prominent: #ffffffcc;
+
+  /* Older tokens Beeper darkens that the palette above does not cover. */
+  --color-base-gray-85: #80a0c1;
+  --color-base-amber-40: rgb(255, 236, 188);
+  --color-base-amber-110: rgb(173, 87, 0);
+  --color-base-crimson-40: rgb(252, 229, 240);
+  --color-base-crimson-110: rgb(211, 30, 102);
+  --color-base-cyan-40: rgb(216, 243, 246);
+  --color-base-cyan-110: rgb(12, 119, 146);
+  --color-base-grass-40: rgb(223, 243, 223);
+  --color-base-grass-110: rgb(41, 124, 59);
+  --color-base-green-110: rgb(24, 121, 78);
+  --color-base-indigo-40: rgb(230, 237, 254);
+  --color-base-indigo-110: rgb(52, 81, 178);
+  --color-base-pink-40: rgb(252, 229, 243);
+  --color-base-pink-110: rgb(205, 29, 141);
+  --color-base-purple-40: rgb(243, 231, 252);
+  --color-base-purple-110: rgb(121, 58, 175);
+  --color-base-red-80: rgb(235, 144, 145);
+  --color-base-red-100: rgb(220, 61, 67);
+  --color-base-red-110: rgb(205, 43, 49);
+  --color-base-teal-40: rgb(217, 243, 238);
+  --color-base-teal-110: rgb(6, 122, 111);
+  --color-background-emoji-mart: #ffffff;
+  --color-background-menu-badge: rgba(23, 52, 90, 0.1);
+  --color-background-select: var(--color-base-white);
+  --color-background-select-disabled: var(--color-base-white);
+  --color-border-button-secondary: var(--color-base-gray-60);
+  --color-border-button-secondary-active: var(--color-base-gray-50);
+  --color-border-button-secondary-disabled: var(--color-base-gray-40);
+  --color-border-button-secondary-focus: var(--color-background-button-secondary);
+  --color-border-message-bubble-suggested: var(--color-base-system-blue-90);
+  --color-text-button-secondary: var(--color-base-gray-120);
+  --color-text-button-secondary-disabled: var(--color-base-gray-100);
+  --color-bg-fill-primary: rgba(23, 52, 90, 0.06);
+  --color-bg-fill-secondary: rgba(23, 52, 90, 0.1);
+  --shadow-color-15: 0, 0, 0, 0.15;
+  --color-honeycomb-info-card: #ffefb9;
+  --shadows-button-secondary: var(--shadows-base-sm);
 }
 
 /* Beeper's own "Rich" and "Monochrome" base themes redefine core tokens on
@@ -306,6 +409,7 @@ body.theme-rich[data-theme-color] {
   --color-secondary-container: #eef7fe;
   --color-background-message-bubble-received: #fff9df;
   --color-highlight-reaction: #d8ebfa;
+  --color-base-gray-10: #fafdff;
   --color-base-gray-20: #f4f9fd;
   --color-base-gray-30: #eaf4fc;
   --color-base-gray-40: #dcebf7;
@@ -313,6 +417,8 @@ body.theme-rich[data-theme-color] {
   --color-base-gray-60: #bed4e9;
   --color-base-gray-70: #a9c3dc;
   --color-base-gray-80: #88acd1;
+  --color-base-gray-85: #80a0c1;
+  --color-base-gray-90: #7894b0;
   --color-base-gray-100: #60758f;
   --color-base-gray-110: #3e5877;
   --color-base-gray-120: #17345a;
@@ -320,6 +426,154 @@ body.theme-rich[data-theme-color] {
   --right-pane-bg: #f9fcff;
   --theme-bg: #d6eafb;
   --theme-background-gradient: #d6eafb;
+}
+
+/* Beeper also hard-codes a handful of dark colours, and keeps a few light
+ * ones behind a prefers-color-scheme: light query. Put both back to what light
+ * mode shows. The accent values are Beeper's own light ones, so the accent
+ * colour picked in Settings > Appearance still applies. */
+@media (prefers-color-scheme: dark) {
+  body.theme-monochrome {
+    --color-primary: hsl(var(--theme-hue), 50%, 45%);
+    --gradient-brand: linear-gradient(
+      190deg,
+      hsl(var(--theme-hue), 86%, 40%) -7.24%,
+      hsl(var(--theme-hue), 75%, 30%) 109.66%
+    );
+  }
+
+  body.theme-rich[data-theme-color="rich-red"] {
+    --color-from: #fe9a9a;
+    --color-to: #fecea9;
+    --color-primary: #fb3939;
+    --linked-message-bg: #fd6868;
+  }
+
+  body.theme-rich[data-theme-color="rich-green"] {
+    --color-from: #80ea8b;
+    --color-to: #effb81;
+    --color-primary: #1cc62c;
+  }
+
+  body.theme-rich[data-theme-color="rich-blue"] {
+    --color-from: #80cbea;
+    --color-to: #81fbae;
+    --linked-message-bg: initial;
+  }
+
+  body.theme-rich[data-theme-color="rich-purple"] {
+    --color-from: #c6a7f4;
+    --color-to: #7ea1f9;
+    --color-primary: #540dfb;
+  }
+
+  body.theme-rich[data-theme-color="rich-grey"] {
+    --color-from: #f9f9f9;
+    --color-to: #6e6e6e;
+  }
+
+  body.theme-rich .button-sentiment--main,
+  body.theme-monochrome .button-sentiment--main {
+    --button-sentiment-secondary-bg: color-mix(in srgb, var(--color-primary) 14%, transparent);
+    --button-sentiment-secondary-bg-hover: color-mix(in srgb, var(--color-primary) 14%, transparent);
+    --button-sentiment-secondary-bg-disabled: color-mix(in srgb, var(--color-primary) 14%, transparent);
+    --button-sentiment-secondary-bg-pressed: color-mix(in srgb, var(--color-primary) 26%, transparent);
+  }
+
+  body.theme-rich .PinnedThreadListItem-module__textNub,
+  body.theme-rich .PinnedThreadListItem-module__text,
+  body.theme-rich .PinnedThreadListItem-module__activityIndicator,
+  body.theme-rich .PinnedThreadListItem-module__isMuted .PinnedThreadListItem-module__textNub,
+  body.theme-rich .PinnedThreadListItem-module__isMuted .PinnedThreadListItem-module__text,
+  body.theme-rich .PinnedThreadListItem-module__isMuted .PinnedThreadListItem-module__activityIndicator {
+    --bubble-bg-color: inherit;
+    --bubble-fg-color: inherit;
+  }
+
+  body.theme-rich .AccountBadge-module__dot {
+    background-color: var(--color-primary);
+  }
+
+  .ThreadListItem-module__platformIcon .is-badge .brand-combined-icon,
+  .MergedChatEditor-module__rowBadge .is-badge .brand-combined-icon,
+  .chatSwitcher-module__badge .is-badge .brand-combined-icon {
+    color: var(--palette-base-black);
+  }
+
+  .EmptyStateConnect-module__pinnedSection {
+    --color-on-surface: var(--msn-ink);
+    color: var(--msn-ink);
+  }
+
+  .LinkedMessage-module__isSender .LinkedMessage-module__linkedMessageContent {
+    background-color: var(--appearance-color-bg-primary);
+  }
+
+  .BrandReplyLineSegment-module__container {
+    color: #e1e1e1;
+  }
+
+  .AccountDisconnectedBanner-module__banner,
+  .AccountsBanner-module__banner {
+    background-color: var(--color-secondary-container);
+  }
+
+  .subview-add-account .list div {
+    color: #171717;
+  }
+
+  .subview-add-account .list div span,
+  .onboarding-module__list > div .onboarding-module__step {
+    background-color: #e8e8e8;
+  }
+
+  .subview-add-account footer {
+    border-color: #dbdbdb;
+    color: #6f6f6f;
+  }
+
+  .subview-add-account .login-flow-picker .flow-option {
+    background-color: var(--color-background-secondary, #f5f5f5);
+    border-color: var(--color-border, #e0e0e0);
+  }
+
+  .subview-add-account .login-flow-picker .flow-option:hover:not(:disabled) {
+    background-color: var(--color-background-hover, #ebebeb);
+  }
+
+  .subview-add-account .login-flow-picker .flow-option .flow-description {
+    color: var(--color-text-secondary, #666);
+  }
+
+  .PrefsActionPrompt-module__overlay {
+    background: rgba(23, 52, 90, 0.3);
+    backdrop-filter: blur(30px);
+  }
+
+  .PrefsActionPrompt-module__container {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-on-surface);
+    box-shadow: 0 32px 80px #0000002e;
+    --color-secondary-container: rgba(23, 52, 90, 0.05);
+    --color-on-secondary-container: var(--color-on-surface);
+  }
+
+  .PrefsActionPrompt-module__input {
+    background: #0000000a;
+    border-color: #0000001f;
+  }
+
+  .PrefsActionPrompt-module__input .input {
+    color: var(--color-on-surface);
+  }
+
+  .PrefsActionPrompt-module__input .input::placeholder {
+    color: color-mix(in srgb, var(--color-on-surface) 55%, transparent);
+  }
+
+  .DeleteAccountPrompt-module__listItem .icon {
+    color: var(--color-text-danger);
+  }
 }
 
 html,
